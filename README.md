@@ -22,3 +22,5 @@ El repositorio almacena:
 
 ##  Objetivo
 Implementar una página web funcional y organizada que represente al instituto y cumpla con los requisitos establecidos en la asignatura.
+
+**Nota:** Los formularios PHP funcionan únicamente en un servidor local con Apache y MySQL (XAMPP). Para probarlos, descargar el proyecto y abrir en XAMPP.
