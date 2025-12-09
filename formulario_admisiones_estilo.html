@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Admisiones - Politécnico</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f5f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background: white;
+            margin: 40px auto;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #0002;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+            color: #444;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            background: #004aad;
+            color: white;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #003580;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Formulario de Admisiones</h1>
+
+        <form action="#" method="post">
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="correo">Correo electrónico:</label>
+            <input type="email" id="correo" name="correo" required>
+
+            <label for="telefono">Teléfono:</label>
+            <input type="text" id="telefono" name="telefono" required>
+
+            <label for="opcion1">Primera opción de carrera:</label>
+            <select id="opcion1" name="opcion1" required>
+                <option value="">Seleccione...</option>
+                <option>Informática</option>
+                <option>Mecánica</option>
+                <option>Industrias Alimentarias</option>
+                <option>Electrónica</option>
+                <option>Electricidad</option>
+                <option>Gastronomía</option>
+                <option>Agropecuaria</option>
+            </select>
+
+            <label for="opcion2">Segunda opción de carrera:</label>
+            <select id="opcion2" name="opcion2" required>
+                <option value="">Seleccione...</option>
+                <option>Informática</option>
+                <option>Mecánica</option>
+                <option>Industrias Alimentarias</option>
+                <option>Electrónica</option>
+                <option>Electricidad</option>
+                <option>Gastronomía</option>
+                <option>Agropecuaria</option>
+            </select>
+
+            <button type="submit">Enviar solicitud</button>
+        </form>
+    </div>
+</body>
+</html>
