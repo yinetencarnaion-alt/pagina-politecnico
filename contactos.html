@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Fresarte Bakery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+
+            /* Fondo con imagen */
+            background-image: url('fondo.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            /* Capa oscura para que se lea bien */
+            position: relative;
+        }
+
+        /* Capa oscura encima del fondo */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 230, 236, 0.7); /* Rosado suave translúcido */
+            backdrop-filter: blur(3px);
+            z-index: -1;
+        }
+.fresarte-header{
+    background:#fff;
+    padding:12px 0;
+    position:sticky;
+    top:0;
+    z-index:999;
+    box-shadow:0 0 18px rgba(0,0,0,0.2);
+}
+
+.fresarte-container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+/* LOGO */
+.fresarte-logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+    color:var(--texto);
+    cursor:pointer;
+}
+.logo-redondo {
+    width: 55px;            /* tamaño del logo */
+    height: 55px;           /* debe ser igual al width */
+    border-radius: 50%;     /* hace el círculo */
+    object-fit: cover;      /* recorta la imagen sin deformarla */
+    border: 3px solid #e63946; /* borde color fresa (opcional) */
+}
+
+
+/* --- NAV --- */
+.fresarte-nav ul{
+    list-style:none;
+    display:flex;
+    gap:20px;
+}
+.fresarte-nav a{
+    text-decoration:none;
+    color:var(--texto);
+    font-weight:600;
+    padding:8px 12px;
+    border-radius:var(--radius);
+    position:relative;
+    transition:.25s;
+}
+
+/* subrayado dinámico */
+.fresarte-nav a::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:0;
+    width:0%;
+    height:3px;
+    background:var(--fresa);
+    border-radius:10px;
+    transition:all .3s ease;
+}
+.fresarte-nav a:hover::after{
+    width:100%;
+    left:0;
+}
+
+/* subrayado dinámico */
+.fresarte-nav a::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:0;
+    width:0%;
+    height:3px;
+    background:#e63946;
+    border-radius:10px;
+    transition:all .3s ease;
+}
+.fresarte-nav a:hover::after{
+    width:100%;
+    left:0;
+}
+
+/* activo */
+.fresarte-nav a.active{
+    color:rgb(19, 1, 1);
+    background:var(--fresa);
+}
+
+/* --- MENÚ MÓVIL --- */
+.fresarte-burger{
+    display:none;
+    background:none;
+    border:0;
+    font-size:28px;
+    color:#e63946;
+    cursor:pointer;
+}
+
+@media(max-width:900px){
+    .fresarte-burger{
+        display:block;
+    }
+    .fresarte-nav{
+        position:absolute;
+        right:0;
+        top:70px;
+        width:75%;
+        background:white;
+        padding:20px;
+        border-radius:0 0 0 18px;
+        display:none;
+        flex-direction:column;
+        box-shadow:0 0 18px rgba(0,0,0,0.2);
+        animation:menuSlide .35s ease-out;
+    }
+    @keyframes menuSlide{
+        from{opacity:0;transform:translateY(-10px);}
+        to{opacity:1;transform:translateY(0);}
+    }
+    .fresarte-nav.open{display:block;}
+    .fresarte-nav ul{flex-direction:column;}
+}
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.70);
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            margin-top: 50px;
+            margin-bottom: 50px;
+            box-shadow: 0 0 18px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #d62828;
+            margin-top: 0;
+        }
+
+        p.intro {
+            text-align: center;
+            color: #444;
+            margin-bottom: 25px;
+            font-size: 17px;
+        }
+
+        form {
+            display: grid;
+            gap: 15px;
+        }
+
+        input, textarea {
+            padding: 12px;
+            border: 2px solid #e63946;
+            border-radius: 10px;
+            font-size: 16px;
+            background-color: #fff;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        button {
+            background-color: #e63946;
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #c5303f;
+        }
+
+        .info-box {
+            background-color: #ffe6eb;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 25px;
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+            color: #d62828;
+        }
+
+        .social-icons img {
+            width: 30px;
+            margin-right: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            color: rgb(19, 1, 1);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ⬇⬇⬇   MENÚ COMPLETO UNIDO ⬇⬇⬇ -->
+<header class="fresarte-header">
+    <div class="fresarte-container">
+
+       <a class="fresarte-logo">
+    <img src="logo.jpg" alt="Logo Fresarte" class="logo-redondo">
+</a>
+
+
+        <button class="fresarte-burger" id="fresaBurger">☰</button>
+
+        <nav class="fresarte-nav" id="fresaNav">
+            <ul>
+                <li><a href="#inicio" >Inicio</a></li>
+                <li><a href="#quienes">Quienes somos</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#sucursales">Sucursales</a></li>
+                <li><a href="contactos.html" class="active">Contacto</a></li>
+                <li><a href="#blog">Blog</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<script>
+document.getElementById("fresaBurger").addEventListener("click", ()=>{
+    document.getElementById("fresaNav").classList.toggle("open");
+});
+</script>
+
+    <div class="container">
+        <h1>Contáctanos</h1>
+        <p class="intro">
+            ¿Tienes preguntas o deseas realizar un pedido especial? ¡Estamos aquí para ayudarte! 💌
+        </p>
+
+        <form>
+            <input type="text" placeholder="🍓 Tu nombre 🍓" required>
+            <input type="email" placeholder="🍓 Tu correo electrónico 🍓" required>
+            <input type="text" placeholder="🍓 Asunto (opcional) 🍓">
+            <textarea placeholder="🍓 Tu mensaje... 🍓" required></textarea>
+            <button type="submit">Enviar mensaje</button>
+        </form>
+
+<div class="info-box">
+    <h3>📍 Información de contacto</h3>
+    <p><strong>Correo:</strong> fresartebakery@gmail.com</p>
+    <p><strong>Teléfono:</strong> +1 (809) 555-1234</p>
+
+    <p><strong>Direcciones:</strong></p>
+    <p>📍 Jacobo Majluta</p>
+    <p>📍 Av. Rafael Vidal, Santiago (STI)</p>
+    <p>📍 MegaCentro</p>
+    <p>📍 Viva Churchill</p>
+    <p>📍 San Isidro</p>
+    <p>📍 Doña Pula, Punta Cana</p>
+</div>
+
+
+<div class="info-box">
+    <h3>✨ Síguenos en redes</h3>
+    <p class="social-icons">
+        <a href="https://www.instagram.com/fresartebakery?igsh=c3h4MmtoMDZvaDI3" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram icon">
+            Instagram
+        </a>
+        <br><br>
+
+        <a href="https://www.facebook.com" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook icon">
+            Facebook
+        </a>
+        <br><br>
+
+        <a href="https://www.tiktok.com" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok icon">
+            TikTok
+        </a>
+    </p>
+</div>
+
+    <footer>
+        © 2025 Fresarte Bakery — ¡Gracias por contactarnos! 
+    </footer>
+</body>
+</html>
