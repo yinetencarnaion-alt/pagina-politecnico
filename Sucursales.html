@@ -1,0 +1,239 @@
+
+<header class="fresarte-header">
+    <div class="fresarte-container">
+
+        <a class="fresarte-logo">
+            <img src="logo" alt="Logo Fresarte" class="logo-redondo">
+        </a>
+
+        <button class="fresarte-burger" id="fresaBurger">☰</button>
+
+        <nav class="fresarte-nav" id="fresaNav">
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#quienes">Quienes somos</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#sucursales">Sucursales</a></li>
+                <li><a href="contactos.html" class="active">Contacto</a></li>
+                <li><a href="#blog">Blog</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        
+.fresarte-header{
+    background:#fff;
+    padding:12px 0;
+    position:sticky;
+    top:0;
+    z-index:999;
+    box-shadow:0 0 18px rgba(0,0,0,0.2);
+}
+
+.fresarte-container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+/* LOGO */
+.fresarte-logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+    cursor:pointer;
+}
+.logo-redondo {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #e63946;
+}
+
+/* --- NAV --- */
+.fresarte-nav ul{
+    list-style:none;
+    display:flex;
+    gap:20px;
+}
+.fresarte-nav a{
+    text-decoration:none;
+    color:#000;
+    font-weight:600;
+    padding:8px 12px;
+    position:relative;
+    transition:.25s;
+}
+
+/* subrayado dinámico */
+.fresarte-nav a::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:0;
+    width:0%;
+    height:3px;
+    background:#e63946;
+    border-radius:10px;
+    transition:all .3s ease;
+}
+.fresarte-nav a:hover::after{
+    width:100%;
+    left:0;
+}
+
+/* activo */
+.fresarte-nav a.active{
+    background:#ffd7e5;
+    color:#e63946;
+    font-weight:bold;
+}
+
+/* --- MENÚ MÓVIL --- */
+.fresarte-burger{
+    display:none;
+    background:none;
+    border:0;
+    font-size:28px;
+    color:#e63946;
+    cursor:pointer;
+}
+
+@media(max-width:900px){
+    .fresarte-burger{
+        display:block;
+    }
+    .fresarte-nav{
+        position:absolute;
+        right:0;
+        top:70px;
+        width:75%;
+        background:white;
+        padding:20px;
+        border-radius:0 0 0 18px;
+        display:none;
+        flex-direction:column;
+        box-shadow:0 0 18px rgba(0,0,0,0.2);
+        animation:menuSlide .35s ease-out;
+    }
+    @keyframes menuSlide{
+        from{opacity:0;transform:translateY(-10px);}
+        to{opacity:1;transform:translateY(0);}
+    }
+
+}
+
+        
+
+        .map-section { background-color: white; padding: 50px 20px; }
+
+        .dr-map-container {
+            position: relative;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Mapa_Republica_Dominicana.svg/960px-Mapa_Republica_Dominicana.svg.png?20180514210538');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 100%;
+            max-width: 1000px;
+            height: 600px;
+            margin: 30px auto;
+            border: 2px solid #a0522d;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .map-marker {
+            position: absolute;
+            cursor: pointer;
+            top: var(--top);
+            left: var(--left);
+            transform: translate(-50%, -100%);
+        }
+
+        .map-marker i {
+            color: #c0392b;
+            font-size: 2em;
+            transition: transform 0.2s;
+        }
+
+        .map-marker i:hover {
+            color: #e74c3c;
+            transform: scale(1.2);
+        }
+
+        footer {
+            background-color: #a0522d;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+   
+</header>
+
+
+
+<section id="sucursales" class="map-section">
+    <center><h2>📍 Nuestras Sucursales en República Dominicana</h2>
+    <p>¡Haz click en un marcador para ver la sucursal en Google Maps!</p> </center>
+
+    <div class="dr-map-container">
+        <!-- Cada marcador ahora tiene su URL DIRECTA -->
+
+        <div class="map-marker" style="--top: 55%; --left: 80%;" onclick="openMaps('https://www.google.com/maps/place/23000+Hig%C3%BCey/@18.6127082,-68.761562,13z/data=!3m1!4b1!4m6!3m5!1s0x8ea8b9e714719af5:0x1aba6440788dcaac!8m2!3d18.6127833!4d-68.71545!16zL20vMDVkajNq?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D')">
+            <i class="fas fa-map-marker-alt" title="Higüey"></i>
+        </div>
+
+        <div class="map-marker" style="--top: 60%; --left: 90%;" onclick="openMaps('https://www.google.com/maps/place/23000+Punta+Cana/@18.6411284,-68.4724343,11z/data=!3m1!4b1!4m6!3m5!1s0x8ea891645dcbfe77:0x61881cfaed12f6f3!8m2!3d18.5600761!4d-68.372535!16zL20vMDVzYzdn?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D')">
+            <i class="fas fa-map-marker-alt" title="Punta Cana"></i>
+        </div>
+
+        <div class="map-marker" style="--top: 57%; --left: 79%;" onclick="openMaps('https://www.google.com/maps/place/La+Romana/@18.4327866,-69.0137202,13z/data=!4m6!3m5!1s0x8eaf5468f250cc2b:0x174be55fc8eb99d9!8m2!3d18.4338645!4d-68.9658817!16zL20vMDZ2MWNy?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D')">
+            <i class="fas fa-map-marker-alt" title="La Romana"></i>
+        </div>
+
+        <div class="map-marker" style="--top: 15%; --left: 40%;" onclick="openMaps('https://www.google.com/maps/place/57000+Puerto+Plata/@19.7896043,-70.7272822,13z/data=!3m1!4b1!4m6!3m5!1s0x8eb1ee3f0046fa75:0x10c1300286d97467!8m2!3d19.7860397!4d-70.6882107!16zL20vMGJoMnFx?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D')">
+            <i class="fas fa-map-marker-alt" title="Puerto Plata"></i>
+        </div>
+
+        <div class="map-marker" style="--top: 30%; --left: 35%;" onclick="openMaps('https://www.google.com/maps/place/Santiago/@19.3366894,-71.2315175,10z/data=!3m1!4b1!4m6!3m5!1s0x8eb1b478b808164f:0x27c88e74b531905d!8m2!3d19.45409!4d-70.6922025!16zL20vMDN4eXo5?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D')">
+            <i class="fas fa-map-marker-alt" title="Santiago"></i>
+        </div>
+
+        <div class="map-marker" style="--top: 56%; --left: 52%;" onclick="openMaps('https://www.google.com/maps/place/Santo+Domingo+Norte/@18.6123406,-69.9961695,12z/data=!3m1!4b1!4m6!3m5!1s0x8eaf8f0195cdfd5d:0xc999fe419318471f!8m2!3d18.5967399!4d-69.9073888!16s%2Fm%2F027wwbh?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D')">
+            <i class="fas fa-map-marker-alt" title="SD Norte"></i>
+        </div>
+
+        <div class="map-marker" style="--top: 59%; --left: 59%;" onclick="openMaps('https://www.google.com/maps/place/Santo+Domingo+Este/@18.5108669,-69.8813454,12z/data=!3m1!4b1!4m6!3m5!1s0x8eaf86f1f07bf257:0x79a94f00155fb584!8m2!3d18.4893469!4d-69.8255369!16s%2Fm%2F027wvfj?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D')">
+            <i class="fas fa-map-marker-alt" title="SD Este"></i>
+        </div>
+
+        <div class="map-marker" style="--top: 62%; --left: 54%;" onclick="openMaps('https://www.google.com/maps/place/Distrito+Nacional/@18.4852905,-70.0193547,12z/data=!3m1!4b1!4m6!3m5!1s0x8eaf8838def1b6f5:0x29143f1c70ffcd9f!8m2!3d18.4860575!4d-69.9312117!16zL20vMDN4emdw?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D')">
+            <i class="fas fa-map-marker-alt" title="Distrito Nacional"></i>
+        </div>
+    </div>
+</section>
+
+
+
+<script>
+    function openMaps(url) {
+        window.open(url, '_blank');
+    }
+</script>
+
+</body>
+</html>
