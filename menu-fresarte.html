@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fresarte – Página Fresa Pastel</title>
+
+<style>
+:root{
+    --fresa:#f06a9b;
+    --rosita:#ffd7e5;
+    --rosita-clara:#fff6fa;
+    --rosita-suave:#ffeef5;
+    --texto:#573542;
+    --radius:14px;
+    --shadow:0 6px 18px rgba(255,120,160,0.15);
+    --hover:rgba(255,160,200,0.20);
+    --white:#fff;
+}
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Nunito", sans-serif;}
+body{
+    background:linear-gradient(180deg,var(--rosita-clara),var(--white));
+    color:var(--texto);
+    min-height:100vh;
+}
+
+/* --- HEADER COMPLETO --- */
+.fresarte-header{
+    background:#fff;
+    padding:12px 0;
+    position:sticky;
+    top:0;
+    z-index:999;
+    box-shadow:0 0 18px rgba(0,0,0,0.2);
+}
+.fresarte-container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+/* LOGO */
+.fresarte-logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+    cursor:pointer;
+}
+.logo-redondo {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #e63946;
+}
+
+/* --- NAV --- */
+.fresarte-nav ul{
+    list-style:none;
+    display:flex;
+    gap:20px;
+}
+.fresarte-nav a{
+    text-decoration:none;
+    color:#000;
+    font-weight:600;
+    padding:8px 12px;
+    position:relative;
+    transition:.25s;
+}
+.fresarte-nav a::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:0;
+    width:0%;
+    height:3px;
+    background:#e63946;
+    border-radius:10px;
+    transition:all .3s ease;
+}
+.fresarte-nav a:hover::after{
+    width:100%;
+    left:0;
+}
+.fresarte-nav a.active{
+    background:#f5d5e0;
+    color:#e63946;
+    font-weight:bold;
+}
+
+/* --- MENÚ MÓVIL --- */
+.fresarte-burger{
+    display:none;
+    background:none;
+    border:0;
+    font-size:28px;
+    color:#e63946;
+    cursor:pointer;
+}
+@media(max-width:900px){
+    .fresarte-burger{
+        display:block;
+    }
+    .fresarte-nav{
+        position:absolute;
+        right:0;
+        top:70px;
+        width:75%;
+        background:white;
+        padding:20px;
+        border-radius:0 0 0 18px;
+        display:none;
+        flex-direction:column;
+        box-shadow:0 0 18px rgba(0,0,0,0.2);
+        animation:menuSlide .35s ease-out;
+    }
+    @keyframes menuSlide{
+        from{opacity:0;transform:translateY(-10px);}
+        to{opacity:1;transform:translateY(0);}
+    }
+    .fresarte-nav.open{display:block;}
+    .fresarte-nav ul{flex-direction:column;}
+}
+
+/* --- HERO --- */
+.hero{
+    width:90%;
+    max-width:1200px;
+    margin:40px auto;
+    background:var(--white);
+    border-radius:20px;
+    padding:40px;
+    box-shadow:var(--shadow);
+    text-align:center;
+}
+.hero h2{
+    font-size:32px;
+    font-family:"Playfair Display",serif;
+    margin-bottom:15px;
+}
+.hero p{
+    font-size:18px;
+    color:#6d4b57;
+}
+.btn-fresa{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 20px;
+    background:linear-gradient(90deg,var(--fresa),var(--rosita));
+    color:white;
+    border-radius:var(--radius);
+    text-decoration:none;
+    font-weight:700;
+}
+
+/* SECCIONES */
+main{
+    padding:40px 5%;
+}
+.section{
+    margin-bottom:3rem;
+}
+h2.section-title{
+    text-align:center;
+    color:var(--fresa);
+    margin-bottom:1.5rem;
+    font-size:2.5rem;
+}
+
+/* GRID DE PRODUCTOS */
+.grid-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:2rem;
+}
+.product-card{
+    background:var(--white);
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    text-align:center;
+    transition:.3s;
+}
+.product-card:hover{
+    transform:translateY(-5px);
+}
+.product-image{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    background:var(--rosita-suave);
+}
+.product-info{
+    padding:1.5rem;
+}
+.product-info h3{
+    color:var(--fresa);
+    margin-bottom:.5rem;
+}
+.price{
+    font-weight:700;
+    margin-top:.5rem;
+}
+.buy-button{
+    margin-top:1rem;
+    padding:10px 15px;
+    background:var(--fresa);
+    color:var(--white);
+    border:none;
+    border-radius:var(--radius);
+    cursor:pointer;
+}
+
+/* CUSTOM FRESARTE */
+.custom-step{
+    background:var(--white);
+    padding:1.5rem;
+    border-radius:var(--radius);
+    border:2px solid var(--fresa);
+}
+.custom-step h3{
+    color:var(--fresa);
+    margin-bottom:1rem;
+}
+.custom-step ul{
+    list-style:disc;
+    margin-left:1.5rem;
+}
+.nota-personalizada{
+    grid-column:1/-1;
+    text-align:center;
+    font-style:italic;
+    color:var(--fresa);
+    margin-top:1rem;
+}
+
+/* MODAL */
+.modal{
+    display:none;
+    position:fixed;
+    z-index:999;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.7);
+}
+.modal-content{
+    background:var(--white);
+    margin:10% auto;
+    padding:30px;
+    width:90%;
+    max-width:500px;
+    border-radius:var(--radius);
+}
+.close-button{
+    float:right;
+    font-size:28px;
+    cursor:pointer;
+}
+#purchase-form label{
+    display:block;
+    margin-top:1rem;
+    font-weight:700;
+    color:var(--fresa);
+}
+#purchase-form input,#purchase-form select,#purchase-form textarea{
+    width:100%;
+    padding:10px;
+    margin-top:.5rem;
+    border-radius:var(--radius);
+    border:1px solid #ccc;
+}
+.final-order{
+    width:100%;
+    margin-top:2rem;
+    padding:15px;
+    background:var(--fresa);
+    color:white;
+    border:none;
+    border-radius:var(--radius);
+    cursor:pointer;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:15px;
+    background:var(--texto);
+    color:var(--white);
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="fresarte-header">
+    <div class="fresarte-container">
+
+        <a class="fresarte-logo">
+            <img src="logo.jpg" alt="Logo Fresarte" class="logo-redondo">
+        </a>
+
+        <button class="fresarte-burger" id="fresaBurger">☰</button>
+
+        <nav class="fresarte-nav" id="fresaNav">
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#quienes">Quienes somos</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#sucursales">Sucursales</a></li>
+                <li><a href="contactos.html" class="active">Contacto</a></li>
+                <li><a href="#blog">Blog</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<!-- HERO -->
+<div id="inicio" class="hero">
+    <h2>Bienvenido a Fresarte 🍓</h2>
+    <a class="btn-fresa" href="#productos">Ver nuestro menú</a>
+</div>
+
+<main>
+    
+    <!-- PRODUCTOS -->
+    <section id="productos" class="section">
+        <h2 class="section-title">Nuestros Favoritos</h2>
+        <div id="productos-container" class="grid-container"></div>
+    </section>
+
+    <section id="crea" class="custom-section">
+        <h2>Prepara tu FRESARTE</h2>
+        <div id="custom-builder" class="grid-container">
+            <!-- Aquí irían los pasos del FRESARTE -->
+            <div class="custom-step">
+                <h3>1. Bowl</h3>
+                <p>12 Oz - RD$ 400</p>
+                <p>16 Oz - RD$ 550</p>
+            </div>
+            <div class="custom-step">
+                <h3>2. Frutas</h3>
+                <ul>
+                    <li>Fresa</li>
+                    <li>Mango</li>
+                    <li>Uvas</li>
+                    <li>Melocoton</li>
+                    <li>Mixto</li>
+                </ul>
+            </div>
+            <div class="custom-step">
+                <h3>3. Crema</h3>
+                <ul>
+                    <li>Cco</li>
+                    <li>Vainilla</li>
+                    <li>Chocolate</li>
+                    <li>Pistacho</li>
+                </ul>
+            </div>
+            <div class="custom-step">
+                <h3>4. Complemento crema</h3>
+                <ul>
+                    <li>Chinola</li>
+                    <li>Shot Baileys</li>
+                    <li>Sin complemento</li>
+                </ul>
+            </div>
+            <div class="custom-step">
+                <h3>5. Cubierta</h3>
+                <ul>
+                    <li>Leche condensada</li>
+                    <li>Nutella</li>
+                    <li>Dulce de leche</li>
+                    <li>Mermelada de fresa</li>
+                    <li>Biscof</li>
+                    <li>Crema de pitacho</li>
+                </ul>
+            </div>
+            <div class="custom-step">
+                <h3>6. Topping extra</h3>
+                <ul>
+                    <li>Nutella </li>
+                    <li>Dulce de leche</li>
+                    <li>Biscoff</li>
+                    <li>Chispas de chocolate</li>
+                    <li>Frutos secos</li>
+                    <li>Almendras</li>
+                    <li>M&M</li>
+                    <li>Pistachos natural</li>
+                    <li>Kataifi Horneado</li>
+                    <li>Salsa de pistacho con chocolate italiano</li>
+                </ul>
+            </div>
+            <p class="nota-personalizada">¡Combina tus ingredientes favoritos!</p>
+        </div>
+    </section>
+
+<!-- MODAL DE COMPRA -->
+<div id="purchase-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h3>Comprar <span id="modal-product-name"></span></h3>
+        <form id="purchase-form">
+            <label for="size">Tamaño:</label>
+            <select id="size" name="size" required></select>
+
+            <label for="quantity">Cantidad:</label>
+            <input type="number" id="quantity" name="quantity" value="1" min="1" required>
+
+            <label for="notes">Notas o Personalización (Opcional):</label>
+            <textarea id="notes" name="notes" placeholder="Ej: Sin nueces, extra crema, etc."></textarea>
+
+            <button type="submit" class="buy-button final-order">Confirmar Pedido</button>
+            <p class="nota-personalizada">(pedido)</p>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 FRESARTE. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+// MENÚ MÓVIL
+const burger = document.getElementById("fresaBurger");
+const nav = document.getElementById("fresaNav");
+burger.addEventListener("click", () => { nav.classList.toggle("open"); });
+
+// PRODUCTOS
+const productos = [
+    {nombre:"Fresas Chocolate Negro",descripcion:"Fresa con cobertura de delicioso chocolate negro.",imagen:"fresa-chocolate.jpg",precio12oz:450,precio16oz:600},
+    {nombre:"Fresas Chocolate Blanco",descripcion:"Fresa con cobertura de cremoso chocolate blanco.",imagen:"fresa-chocolateblaco.jpg",precio12oz:500,precio16oz:650},
+    {nombre:"Fresas Pistacho",descripcion:"Fresa con deliciosa crema y topping de pistacho.",imagen:"fresa-pistacho.jpg",precio12oz:700,precio16oz:900},
+    {nombre:"Fresas Dubai",descripcion:"La mezcla exótica con un toque de Oriente Medio.",imagen:"fresa-dubai.jpg",precio12oz:750,precio16oz:950},
+    {nombre:"Fresas Con Crema",descripcion:"Fresa con crema",imagen:"fresa-crema.jpg",precio12oz:400,precio16oz:550},
+    {nombre:"Mango Con Crema",descripcion:"Mango con crema",imagen:"mango-crema.jpg",precio12oz:400,precio16oz:550},
+    {nombre:"Melocotón Con Crema",descripcion:"Melocotón con crema",imagen:"melocoton-crema.jpg",precio12oz:400,precio16oz:550},
+    {nombre:"Uvas Con Crema",descripcion:"Uvas con crema",imagen:"uvas-crema.jpg",precio12oz:400,precio16oz:550},
+    {nombre:"Mixto Con Crema",descripcion:"Mixto con crema",imagen:"mixto-crema.jpg",precio12oz:400,precio16oz:550}
+];
+
+const container = document.getElementById('productos-container');
+productos.forEach(producto => {
+    const card = document.createElement('div');
+    card.classList.add('product-card');
+    card.innerHTML = `
+        <img src="${producto.imagen}" alt="${producto.nombre}" class="product-image">
+        <div class="product-info">
+            <h3>${producto.nombre}</h3>
+            <p>${producto.descripcion}</p>
+            <div class="price">
+                12 Oz: RD$ ${producto.precio12oz} | 16 Oz: RD$ ${producto.precio16oz}
+            </div>
+            <button class="buy-button open-modal-btn" 
+                    data-name="${producto.nombre}"
+                    data-price-12="${producto.precio12oz}"
+                    data-price-16="${producto.precio16oz}">
+                Ordenar Ahora
+            </button>
+        </div>
+    `;
+    container.appendChild(card);
+});
+
+// MODAL
+const modal = document.getElementById('purchase-modal');
+const closeButton = document.querySelector('.close-button');
+const modalProductName = document.getElementById('modal-product-name');
+const modalSizeSelect = document.getElementById('size');
+const purchaseForm = document.getElementById('purchase-form');
+
+container.addEventListener('click', (event) => {
+    if(event.target.classList.contains('open-modal-btn')){
+        const button = event.target;
+        modalProductName.textContent = button.dataset.name;
+        modalSizeSelect.innerHTML = `
+            <option value="12oz" data-price="${button.dataset.price12}">12 Oz (RD$ ${button.dataset.price12})</option>
+            <option value="16oz" data-price="${button.dataset.price16}">16 Oz (RD$ ${button.dataset.price16})</option>
+        `;
+        modal.style.display='block';
+    }
+});
+
+closeButton.addEventListener('click', ()=>{modal.style.display='none';});
+window.addEventListener('click', e=>{if(e.target==modal) modal.style.display='none';});
+            
+purchaseForm.addEventListener('submit', e=>{
+    e.preventDefault();
+    const product = modalProductName.textContent;
+    const sizeOption = modalSizeSelect.options[modalSizeSelect.selectedIndex];
+    const size = sizeOption.value;
+    const price = parseInt(sizeOption.dataset.price);
+    const quantity = parseInt(document.getElementById('quantity').value);
+    const notes = document.getElementById('notes').value;
+    const total = price * quantity;
+    alert(`Pedido simulado: ${quantity} x ${product} (${size}). Total: RD$ ${total}. Notas: ${notes||'Ninguna'}`);
+    purchaseForm.reset();
+    modal.style.display='none';
+});
+</script>
+
+</body>
+</html>
