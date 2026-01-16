@@ -14,13 +14,8 @@
     --texto:#573542;
 }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:"Nunito",sans-serif;
-}
 
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Nunito",sans-serif;}
 body{
     background:linear-gradient(180deg,var(--rosita-clara),#fff);
     color:var(--texto);
@@ -36,7 +31,6 @@ body{
     z-index:999;
     box-shadow:0 0 18px rgba(0,0,0,.2);
 }
-
 .fresarte-container{
     width:90%;
     max-width:1200px;
@@ -45,7 +39,6 @@ body{
     justify-content:space-between;
     align-items:center;
 }
-
 .logo-redondo{
     width:55px;
     height:55px;
@@ -53,12 +46,8 @@ body{
     border:3px solid #e63946;
 }
 
-.fresarte-nav ul{
-    list-style:none;
-    display:flex;
-    gap:20px;
-}
 
+.fresarte-nav ul{list-style:none;display:flex;gap:20px;}
 .fresarte-nav a{
     text-decoration:none;
     color:#000;
@@ -66,7 +55,6 @@ body{
     padding:8px 12px;
     position:relative;
 }
-
 .fresarte-nav a::after{
     content:"";
     position:absolute;
@@ -77,43 +65,30 @@ body{
     background:#e63946;
     transition:.3s;
 }
-
-.fresarte-nav a:hover::after{
-    width:100%;
-    left:0;
-}
-
+.fresarte-nav a:hover::after{width:100%;left:0;}
 .fresarte-nav a.active{
     background:#f5d5e0;
     color:#e63946;
     font-weight:bold;
-    border-radius:0;
 }
 
- 
+
+@keyframes fall{to{transform:translateY(120vh) rotate(360deg);}}
+
+/*  parametros para el mapa, le quitaste los contenedores */
 .map-section{
-    padding:40px 20px;
+    position:relative;
+    z-index:2;
+    padding:60px 20px;
     text-align:center;
 }
-
 .map-section h2{
     color:var(--fresa);
-    font-size:clamp(1.8rem,5vw,2.4rem);
+    font-size:2.4rem;
 }
-
 .map-section p{
     color:#6d4b57;
     margin-bottom:25px;
-    font-size:0.95rem;
-}
-
- 
-.map-layout{
-    display:flex;
-    gap:30px;
-    align-items:flex-start;
-    max-width:1200px;
-    margin:auto;
 }
 
 /* MAPA */
@@ -125,11 +100,8 @@ body{
     background-position:center;
     width:100%;
     max-width:1000px;
-    aspect-ratio:16/12;
-}
-
-.pastel-map{
-    filter:hue-rotate(320deg) saturate(80%) brightness(1.05);
+    height:600px;
+    margin:auto;
 }
 
 /* PINES */
@@ -138,143 +110,33 @@ body{
     transform:translate(-50%,-100%);
     cursor:pointer;
 }
-
 .map-marker i{
-    font-size:clamp(1.2em,4vw,2em);
+    font-size:2em;
     color:#c0392b;
     transition:.2s;
 }
-
 .map-marker i:hover{
     color:#e74c3c;
     transform:scale(1.2);
 }
 
- 
-.sucursales-lista{
-    width:100%;
-    max-width:420px;
-    display:flex;
-    flex-direction:column;
-    gap:15px;
-}
-
-.sucursal-card{
-    background:#fff;
-    border-radius:14px;
-    padding:15px;
-    box-shadow:0 6px 15px rgba(0,0,0,.1);
-    text-align:left;
-}
-
-.sucursal-card h3{
-    color:var(--fresa);
-    font-size:1.05rem;
-    margin-bottom:4px;
-}
-
-.sucursal-card p{
-    font-size:.85rem;
-    color:#6d4b57;
-}
-
-.abierto{
-    color:#2ecc71;
-    font-weight:600;
-    font-size:.8rem;
-}
-
-.cerrando{
-    color:#e67e22;
-    font-weight:600;
-    font-size:.8rem;
-}
-
- 
-@media(max-width:900px)
-    .fresarte-burger{
-    display:block;
-}
-
-.fresarte-nav{
-    position:absolute;
-    top:70px;
-    right:0;
-    width:75%;
-    background:#fff;
-    flex-direction:column;
-    display:none; /* oculto por defecto */
-    padding:20px;
-    box-shadow:0 0 18px rgba(0,0,0,.2);
-    border-radius:0 0 0 18px;
-    animation:menuSlide .35s ease-out;
-    z-index:998;
-}
-
-.fresarte-nav.open{
-    display:flex; /* se muestra al hacer clic en la hamburguesa */
-}
-
-.fresarte-nav ul{
-    flex-direction:column;
-    gap:0;
-}
-
-.fresarte-nav a{
-    padding:12px 0;
-    border-bottom:1px solid #f0f0f0;
-}
-
-.fresarte-nav a::after{
-    display:none; /* quitamos el subrayado dinámico en móvil */
-}
-
-    {
-    .map-layout{
-        flex-direction:column;
-    }
-}
-
- 
+/* FOOTER */
 footer{
     text-align:center;
-    padding:20px 15px;
+    padding:15px;
     background:var(--texto);
     color:#fff;
-    font-size:.9rem;
 }
 </style>
 </head>
-<button class="fresarte-burger" id="fresaBurger">☰</button>
+
 <body>
 
-    <script>
-const burger = document.getElementById("fresaBurger");
-const nav = document.getElementById("fresaNav");
-
-burger.addEventListener("click", () => {
-    nav.classList.toggle("open"); // abre/cierra
-});
-
-// Cerrar menú al hacer clic en un enlace
-document.querySelectorAll(".fresarte-nav a").forEach(link => {
-    link.addEventListener("click", () => {
-        nav.classList.remove("open");
-    });
-});
-</script>
 
 
 <header class="fresarte-header">
     <div class="fresarte-container">
-        <img src="logo.jpg" alt="Logo Fresarte" class="logo-redondo">
-        
-<div class="fresarte-container">
-    <img src="logo.jpg" alt="Logo Fresarte" class="logo-redondo">
-    <button class="fresarte-burger" id="fresaBurger">☰</button>
-    <nav class="fresarte-nav" id="fresaNav"> ... </nav>
-</div>
-
+        <img src="logo.jpg" class="logo-redondo">
         <nav class="fresarte-nav">
             <ul>
                 <li><a href="index.html">Inicio</a></li>
@@ -292,25 +154,22 @@ document.querySelectorAll(".fresarte-nav a").forEach(link => {
     <h2>📍 Nuestras Sucursales</h2>
     <p>Haz clic en un marcador para abrir Google Maps</p>
 
-    <div class="map-layout">
-        <div class="dr-map-container pastel-map">
-            <div class="map-marker" style="top:55%;left:80%" onclick="openMaps('https://maps.google.com/?q=Higüey')"><i class="fas fa-map-marker-alt" title="Higüey"></i></div>
-            <div class="map-marker" style="top:60%;left:90%" onclick="openMaps('https://maps.google.com/?q=Punta+Cana')"><i class="fas fa-map-marker-alt" title="Punta Cana"></i></div>
-            <div class="map-marker" style="top:57%;left:79%" onclick="openMaps('https://maps.google.com/?q=La+Romana')"><i class="fas fa-map-marker-alt" title="La Romana"></i></div>
-            <div class="map-marker" style="top:15%;left:40%" onclick="openMaps('https://maps.google.com/?q=Puerto+Plata')"><i class="fas fa-map-marker-alt" title="Puerto Plata"></i></div>
-            <div class="map-marker" style="top:30%;left:35%" onclick="openMaps('https://maps.google.com/?q=Santiago')"><i class="fas fa-map-marker-alt" title="Santiago"></i></div>
-            <div class="map-marker" style="top:56%;left:52%" onclick="openMaps('https://maps.google.com/?q=Santo+Domingo+Norte')"><i class="fas fa-map-marker-alt" title="Santo Domingo Norte"></i></div>
-            <div class="map-marker" style="top:59%;left:59%" onclick="openMaps('https://maps.google.com/?q=Santo+Domingo+Este')"><i class="fas fa-map-marker-alt" title="Santo Domingo Este"></i></div>
-            <div class="map-marker" style="top:62%;left:54%" onclick="openMaps('https://maps.google.com/?q=Distrito+Nacional')"><i class="fas fa-map-marker-alt" title="Distrito Nacional"></i></div>
-        </div>
+    <div class="dr-map-container">
 
-        <div class="sucursales-lista">
-            <div class="sucursal-card"><h3>Fresarte Bakery</h3><p>⭐ 5.0 · Panadería</p><p>Santo Domingo Este</p><span class="abierto">Abierto · Cierra 10 p.m.</span></div>
-            <div class="sucursal-card"><h3>Fresarte Rómulo</h3><p>⭐ 4.6 · Panadería</p><p>Santo Domingo</p><span class="abierto">Abierto · Cierra 10 p.m.</span></div>
-            <div class="sucursal-card"><h3>Fresarte Megacentro</h3><p>⭐ 4.1 · Helados</p><p>Santo Domingo Este</p><span class="cerrando">Cierra pronto · 8 p.m.</span></div>
-            <div class="sucursal-card"><h3>Fresarte Santiago</h3><p>⭐ 4.3 · Cafetería</p><p>Santiago</p><span class="abierto">Abierto · Cierra 10 p.m.</span></div>
-            <div class="sucursal-card"><h3>Fresarte La Romana</h3><p>⭐ 5.0 · Postres</p><p>La Romana</p><span class="abierto">Abierto · Cierra 10 p.m.</span></div>
-        </div>
+        <!-- ESTE -->
+        <div class="map-marker" style="top:55%;left:80%" onclick="openMaps('https://maps.google.com/?q=Higüey')"><i class="fas fa-map-marker-alt" title="Higüey"></i></div>
+        <div class="map-marker" style="top:60%;left:90%" onclick="openMaps('https://maps.google.com/?q=Punta+Cana')"><i class="fas fa-map-marker-alt" title="Punta Cana" ></i></div>
+        <div class="map-marker" style="top:57%;left:79%" onclick="openMaps('https://maps.google.com/?q=La+Romana')"><i class="fas fa-map-marker-alt" title="La Romana"></i></div>
+
+        <!-- NORTE -->
+        <div class="map-marker" style="top:15%;left:40%" onclick="openMaps('https://maps.google.com/?q=Puerto+Plata')"><i class="fas fa-map-marker-alt" title="Puerto Plata"></i></div>
+        <div class="map-marker" style="top:30%;left:35%" onclick="openMaps('https://maps.google.com/?q=Santiago')"><i class="fas fa-map-marker-alt" title="Santiago"></i></div>
+
+        <!-- SANTO DOMINGO -->
+        <div class="map-marker" style="top:56%;left:52%" onclick="openMaps('https://maps.google.com/?q=Santo+Domingo+Norte')"><i class="fas fa-map-marker-alt" title="Santo Domingo Norte"></i></div>
+        <div class="map-marker" style="top:59%;left:59%" onclick="openMaps('https://maps.google.com/?q=Santo+Domingo+Este')"><i class="fas fa-map-marker-alt" title="Santo Domingo Este"></i></div>
+        <div class="map-marker" style="top:62%;left:54%" onclick="openMaps('https://maps.google.com/?q=Distrito+Nacional')"><i class="fas fa-map-marker-alt" title="Distrito Nacional"></i></div>
+
     </div>
 </section>
 
@@ -326,3 +185,5 @@ function openMaps(url){
 
 </body>
 </html>
+
+
