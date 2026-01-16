@@ -191,7 +191,45 @@ body{
 }
 
  
-@media(max-width:900px){
+@media(max-width:900px)
+    .fresarte-burger{
+    display:block;
+}
+
+.fresarte-nav{
+    position:absolute;
+    top:70px;
+    right:0;
+    width:75%;
+    background:#fff;
+    flex-direction:column;
+    display:none; /* oculto por defecto */
+    padding:20px;
+    box-shadow:0 0 18px rgba(0,0,0,.2);
+    border-radius:0 0 0 18px;
+    animation:menuSlide .35s ease-out;
+    z-index:998;
+}
+
+.fresarte-nav.open{
+    display:flex; /* se muestra al hacer clic en la hamburguesa */
+}
+
+.fresarte-nav ul{
+    flex-direction:column;
+    gap:0;
+}
+
+.fresarte-nav a{
+    padding:12px 0;
+    border-bottom:1px solid #f0f0f0;
+}
+
+.fresarte-nav a::after{
+    display:none; /* quitamos el subrayado dinámico en móvil */
+}
+
+    {
     .map-layout{
         flex-direction:column;
     }
@@ -207,12 +245,35 @@ footer{
 }
 </style>
 </head>
-
+<button class="fresarte-burger" id="fresaBurger">☰</button>
 <body>
+
+    <script>
+const burger = document.getElementById("fresaBurger");
+const nav = document.getElementById("fresaNav");
+
+burger.addEventListener("click", () => {
+    nav.classList.toggle("open"); // abre/cierra
+});
+
+// Cerrar menú al hacer clic en un enlace
+document.querySelectorAll(".fresarte-nav a").forEach(link => {
+    link.addEventListener("click", () => {
+        nav.classList.remove("open");
+    });
+});
+</script>
+
 
 <header class="fresarte-header">
     <div class="fresarte-container">
         <img src="logo.jpg" alt="Logo Fresarte" class="logo-redondo">
+        
+<div class="fresarte-container">
+    <img src="logo.jpg" alt="Logo Fresarte" class="logo-redondo">
+    <button class="fresarte-burger" id="fresaBurger">☰</button>
+    <nav class="fresarte-nav" id="fresaNav"> ... </nav>
+</div>
 
         <nav class="fresarte-nav">
             <ul>
