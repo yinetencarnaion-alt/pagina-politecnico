@@ -26,7 +26,7 @@ body{
     min-height:100vh;
 }
 
-/* --- HEADER COMPLETO --- */
+/* --- HEADER --- */
 .fresarte-header{
     background:#fff;
     padding:12px 0;
@@ -43,8 +43,6 @@ body{
     justify-content:space-between;
     align-items:center;
 }
-
-/* LOGO */
 .fresarte-logo{
     display:flex;
     align-items:center;
@@ -58,53 +56,6 @@ body{
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid #e63946;
-}
-
-/* CARRUSEL FADE */
-.fresarte-carousel{
-    position:relative;
-    width:100%;
-    height:420px;
-    overflow:hidden;
-}
-.carousel-slide{
-    position:absolute;
-    inset:0;
-    opacity:0;
-    transition:opacity 1s ease-in-out;
-}
-.carousel-slide.active{
-    opacity:1;
-    z-index:1;
-}
-.carousel-slide img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.carousel-btn{
-    position:absolute;
-    top:50%;
-    transform:translateY(-50%);
-    background:rgba(255,255,255,.75);
-    border:none;
-    font-size:36px;
-    padding:6px 14px;
-    border-radius:50%;
-    cursor:pointer;
-    color:var(--fresa);
-    z-index:10;
-}
-.carousel-btn.prev{left:15px;}
-.carousel-btn.next{right:15px;}
-
-
-/* RESPONSIVE */
-@media(max-width:768px){
-    .fresarte-carousel{height:280px;}
-    .carousel-caption h2{font-size:1.9rem;}
-    .carousel-caption p{font-size:1rem;}
 }
 
 /* --- NAV --- */
@@ -137,7 +88,10 @@ body{
     left:0;
 }
 .fresarte-nav a.active{
+    background:#f5d5e0;
+    color:#e63946;
     font-weight:bold;
+    border-radius:0; /* sin bordes redondos */
 }
 
 /* --- MENÚ MÓVIL --- */
@@ -174,24 +128,61 @@ body{
     .fresarte-nav ul{flex-direction:column;}
 }
 
-/* --- HERO --- */
-.hero{
+/* --- CARRUSEL LENTO --- */
+.carousel{
     width:90%;
     max-width:1200px;
+    height:400px;
     margin:40px auto;
-    background:var(--white);
+    overflow:hidden;
     border-radius:20px;
-    padding:40px;
     box-shadow:var(--shadow);
+}
+.carousel-track{
+    display:flex;
+    width:400%;
+    height:100%;
+    animation:slide 60s infinite linear; /* animación lenta y continua */
+}
+.carousel-track img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+@keyframes slide{
+    0%   { transform:translateX(0); }
+    25%  { transform:translateX(-100%); }
+    50%  { transform:translateX(-200%); }
+    75%  { transform:translateX(-300%); }
+    100% { transform:translateX(-400%); } /* al final vuelve a empezar */
+}
+
+
+
+
+/* HERO TEXT */
+.hero-text{
     text-align:center;
+    margin-top:20px;
 }
-.hero h2{
-    font-size:32px;
-    font-family:"Playfair Display",serif;
-    margin-bottom:15px;
+.hero-text h2{
+    font-family: 'Fredoka', sans-serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: #e63946;
+    margin-bottom: 15px;
 }
 
-
+.btn-fresa{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 20px;
+    background:linear-gradient(90deg,var(--fresa),var(--rosita));
+    color:white;
+    border-radius:var(--radius);
+    text-decoration:none;
+    font-weight:700;
+}
 
 /* FOOTER */
 footer{
@@ -199,16 +190,15 @@ footer{
     padding:15px;
     background:var(--texto);
     color:var(--white);
+    margin-top:50px;
 }
 </style>
 </head>
-
 <body>
 
 <!-- HEADER -->
 <header class="fresarte-header">
     <div class="fresarte-container">
-
         <a class="fresarte-logo">
             <img src="logo.jpg" alt="Logo Fresarte" class="logo-redondo">
         </a>
@@ -217,42 +207,210 @@ footer{
 
         <nav class="fresarte-nav" id="fresaNav">
             <ul>
-                <li><a href="index.html" class="active">Inicio</a></li>
-                <li><a href="quienes-somos.html">Quienes somos</a></li>
-                <li><a href="menu-fresarte.html">Productos</a></li>
-                <li><a href="Sucursales.html">Sucursales</a></li>
-                <li><a href="contactos.html">Contacto</a></li>
-                <li><a href="blog.html">Blog</a></li>
+                <li><a href="#inicio" class="active">Inicio</a></li>
+                <li><a href="#quienes">Quienes somos</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#sucursales">Sucursales</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#blog">Blog</a></li>
             </ul>
         </nav>
-
     </div>
 </header>
 
-<!-- HERO -->
-<div id="inicio" class="hero">
+<div class="hero-text" id="inicio">
     <h2>Bienvenido a Fresarte 🍓</h2>
-
+    <a class="btn-fresa" href="#productos">Ver nuestro menú</a>
 </div>
 
+    
+<!-- CARRUSEL -->
+<section class="carousel">
+    <div class="carousel-track">
+        <img src="fresarte1.jpeg" alt="Fresas con crema 1">
+        <img src="fresarte2.jpeg" alt="Fresas con crema 2">
+        <img src="fresarte3.jpeg" alt="Fresas con crema 3">
+        <img src="fresarte5.jpg" alt="Fresas con crema 4">
+         <img src="fresarte6.jpg" alt="Fresas con crema 5">
+        <img src="fresarte7.png" alt="Fresas con crema 6">
+        <img src="fresarte8.png" alt="Fresas con crema 7">
+        <img src="fresarte9.png" alt="Fresas con crema 8">
+        <img src="fresarte10.png" alt="Fresas con crema 9">
+        
+         <img src="fresarte1.jpeg" alt="Fresas con crema 1">
+        <img src="fresarte2.jpeg" alt="Fresas con crema 2">
+        <img src="fresarte3.jpeg" alt="Fresas con crema 3">
+        <img src="fresarte5.jpg" alt="Fresas con crema 4">
+         <img src="fresarte6.jpg" alt="Fresas con crema 5">
+        <img src="fresarte7.png" alt="Fresas con crema 6">
+        <img src="fresarte8.png" alt="Fresas con crema 7">
+        <img src="fresarte9.png" alt="Fresas con crema 8">
+        <img src="fresarte10.png" alt="Fresas con crema 9">
 
-<section class="fresarte-carousel" id="carousel">
-    <div class="carousel-slide active">
-        <img src="fresa.jpg" alt="Carrusel 1">
+           <img src="fresarte1.jpeg" alt="Fresas con crema 1">
+        <img src="fresarte2.jpeg" alt="Fresas con crema 2">
+        <img src="fresarte3.jpeg" alt="Fresas con crema 3">
+        <img src="fresarte5.jpg" alt="Fresas con crema 4">
+         <img src="fresarte6.jpg" alt="Fresas con crema 5">
+        <img src="fresarte7.png" alt="Fresas con crema 6">
+        <img src="fresarte8.png" alt="Fresas con crema 7">
+        <img src="fresarte9.png" alt="Fresas con crema 8">
+        <img src="fresarte10.png" alt="Fresas con crema 9">
+
+           <img src="fresarte1.jpeg" alt="Fresas con crema 1">
+        <img src="fresarte2.jpeg" alt="Fresas con crema 2">
+        <img src="fresarte3.jpeg" alt="Fresas con crema 3">
+        <img src="fresarte5.jpg" alt="Fresas con crema 4">
+         <img src="fresarte6.jpg" alt="Fresas con crema 5">
+        <img src="fresarte7.png" alt="Fresas con crema 6">
+        <img src="fresarte8.png" alt="Fresas con crema 7">
+        <img src="fresarte9.png" alt="Fresas con crema 8">
+        <img src="fresarte10.png" alt="Fresas con crema 9">
+
+           <img src="fresarte1.jpeg" alt="Fresas con crema 1">
+        <img src="fresarte2.jpeg" alt="Fresas con crema 2">
+        <img src="fresarte3.jpeg" alt="Fresas con crema 3">
+        <img src="fresarte5.jpg" alt="Fresas con crema 4">
+         <img src="fresarte6.jpg" alt="Fresas con crema 5">
+        <img src="fresarte7.png" alt="Fresas con crema 6">
+        <img src="fresarte8.png" alt="Fresas con crema 7">
+        <img src="fresarte9.png" alt="Fresas con crema 8">
+        <img src="fresarte10.png" alt="Fresas con crema 9">
+
+           <img src="fresarte1.jpeg" alt="Fresas con crema 1">
+        <img src="fresarte2.jpeg" alt="Fresas con crema 2">
+        <img src="fresarte3.jpeg" alt="Fresas con crema 3">
+        <img src="fresarte5.jpg" alt="Fresas con crema 4">
+         <img src="fresarte6.jpg" alt="Fresas con crema 5">
+        <img src="fresarte7.png" alt="Fresas con crema 6">
+        <img src="fresarte8.png" alt="Fresas con crema 7">
+        <img src="fresarte9.png" alt="Fresas con crema 8">
+        <img src="fresarte10.png" alt="Fresas con crema 9">
+
+           <img src="fresarte1.jpeg" alt="Fresas con crema 1">
+        <img src="fresarte2.jpeg" alt="Fresas con crema 2">
+        <img src="fresarte3.jpeg" alt="Fresas con crema 3">
+        <img src="fresarte5.jpg" alt="Fresas con crema 4">
+         <img src="fresarte6.jpg" alt="Fresas con crema 5">
+        <img src="fresarte7.png" alt="Fresas con crema 6">
+        <img src="fresarte8.png" alt="Fresas con crema 7">
+        <img src="fresarte9.png" alt="Fresas con crema 8">
+        <img src="fresarte10.png" alt="Fresas con crema 9">
+
+           <img src="fresarte1.jpeg" alt="Fresas con crema 1">
+        <img src="fresarte2.jpeg" alt="Fresas con crema 2">
+        <img src="fresarte3.jpeg" alt="Fresas con crema 3">
+        <img src="fresarte5.jpg" alt="Fresas con crema 4">
+         <img src="fresarte6.jpg" alt="Fresas con crema 5">
+        <img src="fresarte7.png" alt="Fresas con crema 6">
+        <img src="fresarte8.png" alt="Fresas con crema 7">
+        <img src="fresarte9.png" alt="Fresas con crema 8">
+        <img src="fresarte10.png" alt="Fresas con crema 9">
+
+           <img src="fresarte1.jpeg" alt="Fresas con crema 1">
+        <img src="fresarte2.jpeg" alt="Fresas con crema 2">
+        <img src="fresarte3.jpeg" alt="Fresas con crema 3">
+        <img src="fresarte5.jpg" alt="Fresas con crema 4">
+         <img src="fresarte6.jpg" alt="Fresas con crema 5">
+        <img src="fresarte7.png" alt="Fresas con crema 6">
+        <img src="fresarte8.png" alt="Fresas con crema 7">
+        <img src="fresarte9.png" alt="Fresas con crema 8">
+        <img src="fresarte10.png" alt="Fresas con crema 9">
+  
+    <img src="fresarte1.jpeg" alt="Fresas con crema 1">
+        <img src="fresarte2.jpeg" alt="Fresas con crema 2">
+        <img src="fresarte3.jpeg" alt="Fresas con crema 3">
+        <img src="fresarte5.jpg" alt="Fresas con crema 4">
+         <img src="fresarte6.jpg" alt="Fresas con crema 5">
+        <img src="fresarte7.png" alt="Fresas con crema 6">
+        <img src="fresarte8.png" alt="Fresas con crema 7">
+        <img src="fresarte9.png" alt="Fresas con crema 8">
+        <img src="fresarte10.png" alt="Fresas con crema 9">
+        
+         <img src="fresarte1.jpeg" alt="Fresas con crema 1">
+        <img src="fresarte2.jpeg" alt="Fresas con crema 2">
+        <img src="fresarte3.jpeg" alt="Fresas con crema 3">
+        <img src="fresarte5.jpg" alt="Fresas con crema 4">
+         <img src="fresarte6.jpg" alt="Fresas con crema 5">
+        <img src="fresarte7.png" alt="Fresas con crema 6">
+        <img src="fresarte8.png" alt="Fresas con crema 7">
+        <img src="fresarte9.png" alt="Fresas con crema 8">
+        <img src="fresarte10.png" alt="Fresas con crema 9">
+
+           <img src="fresarte1.jpeg" alt="Fresas con crema 1">
+        <img src="fresarte2.jpeg" alt="Fresas con crema 2">
+        <img src="fresarte3.jpeg" alt="Fresas con crema 3">
+        <img src="fresarte5.jpg" alt="Fresas con crema 4">
+         <img src="fresarte6.jpg" alt="Fresas con crema 5">
+        <img src="fresarte7.png" alt="Fresas con crema 6">
+        <img src="fresarte8.png" alt="Fresas con crema 7">
+        <img src="fresarte9.png" alt="Fresas con crema 8">
+        <img src="fresarte10.png" alt="Fresas con crema 9">
+
+           <img src="fresarte1.jpeg" alt="Fresas con crema 1">
+        <img src="fresarte2.jpeg" alt="Fresas con crema 2">
+        <img src="fresarte3.jpeg" alt="Fresas con crema 3">
+        <img src="fresarte5.jpg" alt="Fresas con crema 4">
+         <img src="fresarte6.jpg" alt="Fresas con crema 5">
+        <img src="fresarte7.png" alt="Fresas con crema 6">
+        <img src="fresarte8.png" alt="Fresas con crema 7">
+        <img src="fresarte9.png" alt="Fresas con crema 8">
+        <img src="fresarte10.png" alt="Fresas con crema 9">
+
+           <img src="fresarte1.jpeg" alt="Fresas con crema 1">
+        <img src="fresarte2.jpeg" alt="Fresas con crema 2">
+        <img src="fresarte3.jpeg" alt="Fresas con crema 3">
+        <img src="fresarte5.jpg" alt="Fresas con crema 4">
+         <img src="fresarte6.jpg" alt="Fresas con crema 5">
+        <img src="fresarte7.png" alt="Fresas con crema 6">
+        <img src="fresarte8.png" alt="Fresas con crema 7">
+        <img src="fresarte9.png" alt="Fresas con crema 8">
+        <img src="fresarte10.png" alt="Fresas con crema 9">
+
+           <img src="fresarte1.jpeg" alt="Fresas con crema 1">
+        <img src="fresarte2.jpeg" alt="Fresas con crema 2">
+        <img src="fresarte3.jpeg" alt="Fresas con crema 3">
+        <img src="fresarte5.jpg" alt="Fresas con crema 4">
+         <img src="fresarte6.jpg" alt="Fresas con crema 5">
+        <img src="fresarte7.png" alt="Fresas con crema 6">
+        <img src="fresarte8.png" alt="Fresas con crema 7">
+        <img src="fresarte9.png" alt="Fresas con crema 8">
+        <img src="fresarte10.png" alt="Fresas con crema 9">
+
+           <img src="fresarte1.jpeg" alt="Fresas con crema 1">
+        <img src="fresarte2.jpeg" alt="Fresas con crema 2">
+        <img src="fresarte3.jpeg" alt="Fresas con crema 3">
+        <img src="fresarte5.jpg" alt="Fresas con crema 4">
+         <img src="fresarte6.jpg" alt="Fresas con crema 5">
+        <img src="fresarte7.png" alt="Fresas con crema 6">
+        <img src="fresarte8.png" alt="Fresas con crema 7">
+        <img src="fresarte9.png" alt="Fresas con crema 8">
+        <img src="fresarte10.png" alt="Fresas con crema 9">
+
+           <img src="fresarte1.jpeg" alt="Fresas con crema 1">
+        <img src="fresarte2.jpeg" alt="Fresas con crema 2">
+        <img src="fresarte3.jpeg" alt="Fresas con crema 3">
+        <img src="fresarte5.jpg" alt="Fresas con crema 4">
+         <img src="fresarte6.jpg" alt="Fresas con crema 5">
+        <img src="fresarte7.png" alt="Fresas con crema 6">
+        <img src="fresarte8.png" alt="Fresas con crema 7">
+        <img src="fresarte9.png" alt="Fresas con crema 8">
+        <img src="fresarte10.png" alt="Fresas con crema 9">
+
+           <img src="fresarte1.jpeg" alt="Fresas con crema 1">
+        <img src="fresarte2.jpeg" alt="Fresas con crema 2">
+        <img src="fresarte3.jpeg" alt="Fresas con crema 3">
+        <img src="fresarte5.jpg" alt="Fresas con crema 4">
+         <img src="fresarte6.jpg" alt="Fresas con crema 5">
+        <img src="fresarte7.png" alt="Fresas con crema 6">
+        <img src="fresarte8.png" alt="Fresas con crema 7">
+        <img src="fresarte9.png" alt="Fresas con crema 8">
+        <img src="fresarte10.png" alt="Fresas con crema 9">
+  
+  
+        
     </div>
-
-    <div class="carousel-slide">
-        <img src="fresa1.jpg" alt="Carrusel 2">
-    </div>
-
-    <div class="carousel-slide">
-        <img src="fresa3.jpg" alt="Carrusel 3">
-    </div>
-
- <button class="carousel-btn prev">‹</button>
-    <button class="carousel-btn next">›</button>
 </section>
-
 
 
 
@@ -260,48 +418,13 @@ footer{
     <p>&copy; 2025 FRESARTE. Todos los derechos reservados.</p>
 </footer>
 
-
-
 <script>
-// CARRUSEL
-const slides = document.querySelectorAll('.carousel-slide');
-const nextBtn = document.querySelector('.next');
-const prevBtn = document.querySelector('.prev');
-const carousel = document.getElementById('carousel');
 
-let current = 0;
-let interval;
-
-function showSlide(index){
-    slides.forEach(slide => slide.classList.remove('active'));
-    slides[index].classList.add('active');
-}
-
-function nextSlide(){
-    current = (current + 1) % slides.length;
-    showSlide(current);
-}
-function prevSlide(){
-    current = (current - 1 + slides.length) % slides.length;
-    showSlide(current);
-}
-
-nextBtn.onclick = nextSlide;
-prevBtn.onclick = prevSlide;
-
-function startAuto(){
-    interval = setInterval(nextSlide, 5000);
-}
-function stopAuto(){
-    clearInterval(interval);
-}
-
-carousel.addEventListener('mouseenter', stopAuto);
-carousel.addEventListener('mouseleave', startAuto);
-
-startAuto();
+const burger = document.getElementById("fresaBurger");
+const nav = document.getElementById("fresaNav");
+burger.addEventListener("click", ()=>{ nav.classList.toggle("open"); });
 </script>
-
 
 </body>
 </html>
+
