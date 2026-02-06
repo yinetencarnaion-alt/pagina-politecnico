@@ -1,34 +1,28 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fresarte – Página Fresa Pastel</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresarte – Premium Strawberry Desserts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --fresa:#e6399b;
+            --fresa-clara: #e6399b;
+            --rosita:#ffd7e5;
+            --rosita-clara:#fff6fa;
+            --rosita-suave:#ffeef5;
+            --texto:#573542;
+            --radius:16px;
+            --shadow: 0 10px 25px rgba(230, 57, 70, 0.15);
+            --white:#fff;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
-    
-<style>
-:root{
-    --fresa:#f06a9b;
-    --rosita:#ffd7e5;
-    --rosita-clara:#fff6fa;
-    --rosita-suave:#ffeef5;
-    --texto:#573542;
-    --radius:14px;
-    --shadow:0 6px 18px rgba(255,120,160,0.15);
-    --hover:rgba(255,160,200,0.20);
-    --white:#fff;
-}
+        /* RESET & BASE */
+        *{margin:0;padding:0;box-sizing:border-box;font-family:"Nunito", sans-serif;}
+        body{ background: var(--rosita-clara); color:var(--texto); min-height:100vh; overflow-x: hidden;}
 
-/* RESET */
-*{margin:0;padding:0;box-sizing:border-box;font-family:"Nunito", sans-serif;}
-body{
-    background:linear-gradient(180deg,var(--rosita-clara),var(--white));
-    color:var(--texto);
-    min-height:100vh;
-}
-
-/* --- HEADER COMPLETO --- */
+        /* --- HEADER COMPLETO --- */
 .fresarte-header{
     background:#fff;
     padding:12px 0;
@@ -59,7 +53,7 @@ body{
     height: 55px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #e63946;
+    border: 3px solid #e6399b;
 }
 
 /* --- NAV --- */
@@ -83,7 +77,7 @@ body{
     bottom:0;
     width:0%;
     height:3px;
-    background:#e63946;
+    background:#e6399b;
     border-radius:10px;
     transition:all .3s ease;
 }
@@ -93,7 +87,7 @@ body{
 }
 .fresarte-nav a.active{
     background:#f5d5e0;
-    color:#e63946;
+    color:#e6399b;
     font-weight:bold;
 }
 
@@ -103,7 +97,7 @@ body{
     background:none;
     border:0;
     font-size:28px;
-    color:#e63946;
+    color:#e6399b;
     cursor:pointer;
 }
 @media(max-width:900px){
@@ -131,100 +125,67 @@ body{
     .fresarte-nav ul{flex-direction:column;}
 }
 
-/* --- HERO --- */
-.hero{
-    width:90%;
-    max-width:1200px;
-    margin:40px auto;
-    background:var(--white);
-    border-radius:20px;
-    padding:40px;
-    box-shadow:var(--shadow);
-    text-align:center;
-}
- .hero-text h2{
-    font-family: 'Fredoka', sans-serif;
-    font-size: 36px;
-    font-weight: 900;
-    color: #e63946;
-    margin-bottom: 15px;
-    text-align: center;
-}
-     
-.hero p{
-    font-size:18px;
-    color:#6d4b57;
-}
-.btn-fresa{
-    display:inline-block;
-    margin-top:20px;
-    padding:12px 20px;
-    background:linear-gradient(90deg,var(--fresa),var(--rosita));
-    color:white;
-    border-radius:var(--radius);
-    text-decoration:none;
-    font-weight:700;
-}
 
-/* SECCIONES */
-main{
-    padding:40px 5%;
-}
-.section{
-    margin-bottom:3rem;
-}
-h2.section-title{
-    text-align:center;
-    color:var(--fresa);
-    margin-bottom:1.5rem;
-    font-size:2.5rem;
-}
+        /* HERO */
+        .hero-text { padding: 60px 20px 20px; text-align: center; }
+        .hero-text h2{ font-family: 'Fredoka', sans-serif; font-size: 3rem; color: var(--fresa); }
 
-/* GRID DE PRODUCTOS */
-.grid-container{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:2rem;
-}
-.product-card{
-    background:var(--white);
-    border-radius:var(--radius);
-    overflow:hidden;
-    box-shadow:var(--shadow);
-    text-align:center;
-    transition:.3s;
-}
-.product-card:hover{
-    transform:translateY(-5px);
-}
-.product-image{
-    width:100%;
-    height:250px;
-    object-fit:cover;
-    background:var(--rosita-suave);
-}
-.product-info{
-    padding:1.5rem;
-}
-.product-info h3{
-    color:var(--fresa);
-    margin-bottom:.5rem;
-}
-.price{
-    font-weight:700;
-    margin-top:.5rem;
-}
-.buy-button{
-    margin-top:1rem;
-    padding:10px 15px;
-    background:var(--fresa);
-    color:var(--white);
-    border:none;
-    border-radius:var(--radius);
-    cursor:pointer;
-}
+        /* GRID */
+        main{ width: 90%; max-width: 1200px; margin: auto; padding-bottom: 50px;}
+        .grid-container{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem; }
+        
+        .product-card{ 
+            background:var(--white); border-radius:var(--radius); overflow:hidden; 
+            box-shadow:var(--shadow); transition:.3s; position: relative;
+        }
+        .product-card:hover{ transform:translateY(-8px); }
+        .product-image{ width:100%; height:230px; object-fit:cover; }
+        .product-info{ padding:1.5rem; text-align: center;}
+        .price{ font-weight:800; color: var(--fresa); margin: 10px 0; font-size: 1.1rem;}
 
-/* CUSTOM FRESARTE */
+        .buy-button{ 
+            width: 100%; padding:12px; background:var(--fresa); color:var(--white); 
+            border:none; border-radius:var(--radius); cursor:pointer; font-weight: 700; transition: .3s;
+        }
+        .buy-button:hover{ background: var(--fresa-clara); }
+
+        /* PANEL CARRITO */
+        #cart-panel {
+            position: fixed; top: 0; right: -400px; width: 350px; height: 100%;
+            background: white; box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+            z-index: 2000; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 25px; display: flex; flex-direction: column;
+        }
+        #cart-panel.open { right: 0; }
+        #cart-items { flex-grow: 1; overflow-y: auto; margin-top: 20px; }
+        
+        .cart-item {
+            background: var(--rosita-suave); padding: 12px; border-radius: 12px;
+            margin-bottom: 15px; border-left: 4px solid var(--fresa);
+        }
+
+        /* MODAL */
+        .modal{ 
+            display:none; position:fixed; z-index:3000; left:0; top:0; 
+            width:100%; height:100%; background:rgba(0,0,0,0.6); 
+            backdrop-filter: blur(4px); align-items:center; justify-content:center; 
+        }
+        .modal-content{ 
+            background:white; padding:30px; width:90%; max-width:500px; 
+            border-radius:var(--radius); position: relative; max-height: 90vh; overflow-y: auto;
+        }
+        .close-button{ position: absolute; right: 20px; top: 15px; font-size: 25px; cursor: pointer; }
+
+        input, select, textarea {
+            width: 100%; padding: 12px; margin: 8px 0 15px; border-radius: 10px; border: 1px solid #ddd;
+        }
+
+        /* MOBILE */
+        @media(max-width:768px){
+            .fresarte-nav { display: none; }
+            #cart-panel { width: 100%; right: -100%; }
+        }
+        /* CUSTOM FRESARTE */
 .custom-step{
     background:var(--white);
     padding:1.5rem;
@@ -246,55 +207,6 @@ h2.section-title{
     color:var(--fresa);
     margin-top:1rem;
 }
-
-/* MODAL */
-.modal{
-    display:none;
-    position:fixed;
-    z-index:999;
-    left:0;
-    top:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.7);
-}
-.modal-content{
-    background:var(--white);
-    margin:10% auto;
-    padding:30px;
-    width:90%;
-    max-width:500px;
-    border-radius:var(--radius);
-}
-.close-button{
-    float:right;
-    font-size:28px;
-    cursor:pointer;
-}
-#purchase-form label{
-    display:block;
-    margin-top:1rem;
-    font-weight:700;
-    color:var(--fresa);
-}
-#purchase-form input,#purchase-form select,#purchase-form textarea{
-    width:100%;
-    padding:10px;
-    margin-top:.5rem;
-    border-radius:var(--radius);
-    border:1px solid #ccc;
-}
-.final-order{
-    width:100%;
-    margin-top:2rem;
-    padding:15px;
-    background:var(--fresa);
-    color:white;
-    border:none;
-    border-radius:var(--radius);
-    cursor:pointer;
-}
-
 /* FOOTER */
 footer{
     text-align:center;
@@ -304,13 +216,11 @@ footer{
 }
 
 
-
-</style>
+    </style>
 </head>
-
 <body>
 
-<!-- HEADER -->
+    <!-- HEADER -->
 <header class="fresarte-header">
     <div class="fresarte-container">
 
@@ -318,8 +228,7 @@ footer{
             <img src="logo.jpg" alt="Logo Fresarte" class="logo-redondo">
         </a>
 
-        <button class="fresarte-burger" id="fresaBurger">☰</button>
-
+        
         <nav class="fresarte-nav" id="fresaNav">
             <ul>
                 <li><a href="index.html" >Inicio</a></li>
@@ -331,25 +240,219 @@ footer{
             </ul>
         </nav>
 
+
+            <button id="cart-toggle" style="background:var(--fresa); color:white; border:none; padding:10px 20px; border-radius:50px; cursor:pointer; font-weight:700;">
+                🛒 <span id="cart-count">0</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="hero-text">
+        <h2>Bienvenido a Fresarte 🍓</h2>
+        <p>El arte de las fresas en un solo lugar</p>
     </div>
-</header>
 
-<!-- HERO -->
-<div id="Productos" class="hero-text">
-    <h2>Bienvenido a Fresarte 🍓</h2>
+    <main>
+        <section class="section">
+            <div id="productos-container" class="grid-container"></div>
+        </section>
+    </main>
 
-</div>
+    <div id="cart-panel">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid var(--rosita);">
+            <h3>Tu Carrito</h3>
+            <span id="close-cart" style="cursor:pointer; font-size:24px;">&times;</span>
+        </div>
+        <div id="cart-items">
+            </div>
+        <div style="padding-top:20px;">
+            <h4>Total: RD$ <span id="cart-total">0</span></h4>
+            <button id="checkout-btn" class="buy-button" style="margin-top:15px;">Proceder al Pedido</button>
+        </div>
+    </div>
 
-<main>
-    
-    <!-- PRODUCTOS -->
-    <section id="productos" class="section">
-        <h2 class="section-title">Nuestros Favoritos</h2>
-        <div id="productos-container" class="grid-container"></div>
-    </section>
+    <div id="purchase-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3 id="modal-title">Finalizar Pedido</h3>
+            <form id="purchase-form">
+                <div id="single-product-options">
+                    <label>Tamaño:</label>
+                    <select id="size-select"></select>
+                </div>
 
+                <label>Nombre Completo:</label>
+                <input type="text" id="customer-name" required placeholder="Tu nombre">
+                
+                <label>Especificaciones:</label>
+                <input type="text" id="customer-name" required placeholder="Sin nueces,extra chocolate,etc...">
+
+                <label>Teléfono:</label>
+                <input type="tel" id="customer-phone" required placeholder="809-000-0000">
+                
+                <label>Dirección de Entrega:</label>
+                <textarea id="customer-address" required placeholder="Calle, número, sector..."></textarea>
+                
+                <label>Método de Pago:</label>
+                <select id="payment-method" required>
+                    <option value="">Seleccione método</option>
+    <option>Efectivo contra entrega</option>
+    <option>Tarjeta (POS al recibir)</option>
+    <option>Transferencia bancaria</option>
+
+                </select>
+
+                <button type="submit" class="buy-button">Enviar Pedido vía WhatsApp</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+       const productos = [
+    {nombre:"Fresas Chocolate Negro",descripcion:"Fresa con cobertura de delicioso chocolate negro.",imagen:"fresa-chocolate.jpg",precio12oz:450,precio16oz:600},
+    {nombre:"Fresas Chocolate Blanco",descripcion:"Fresa con cobertura de cremoso chocolate blanco.",imagen:"fresa-chocolateblaco.jpg",precio12oz:500,precio16oz:650},
+    {nombre:"Fresas Pistacho",descripcion:"Fresa con deliciosa crema y topping de pistacho.",imagen:"fresa-pistacho.jpg",precio12oz:700,precio16oz:900},
+    {nombre:"Fresas Dubai",descripcion:"La mezcla exótica con un toque de Oriente Medio.",imagen:"fresa-dubai.jpg",precio12oz:750,precio16oz:950},
+    {nombre:"Fresas Con Crema",descripcion:"Fresa con crema",imagen:"fresa-crema.jpg",precio12oz:400,precio16oz:550},
+    {nombre:"Mango Con Crema",descripcion:"Mango con crema",imagen:"mango-crema.jpg",precio12oz:400,precio16oz:550},
+    {nombre:"Melocotón Con Crema",descripcion:"Melocotón con crema",imagen:"melocoton-crema.jpg",precio12oz:400,precio16oz:550},
+    {nombre:"Uvas Con Crema",descripcion:"Uvas con crema",imagen:"uvas-crema.jpg",precio12oz:400,precio16oz:550},
+    {nombre:"Mixto Con Crema",descripcion:"Mixto con crema",imagen:"mixto-crema.jpg",precio12oz:400,precio16oz:550}
+];
+
+
+        let cart = [];
+        const container = document.getElementById('productos-container');
+        const cartPanel = document.getElementById('cart-panel');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartCount = document.getElementById('cart-count');
+        const cartTotal = document.getElementById('cart-total');
+        const modal = document.getElementById('purchase-modal');
+
+        // RENDERIZAR PRODUCTOS
+        productos.forEach(p => {
+            container.innerHTML += `
+                <div class="product-card">
+                    <img src="${p.imagen}" class="product-image">
+                    <div class="product-info">
+                        <h3>${p.nombre}</h2>
+                        <h4>${p.descripcion}</h4>
+                        <div class="price">Desde RD$ ${p.precio12oz}</div>
+                         <div class="product-info">
+                        <button class="buy-button" onclick="openProductModal(${p.id})">Agregar al Carrito</button>
+                    </div>
+                </div>
+            
+            `;
+        });
+
+        // ABRIR MODAL PARA ELEGIR TAMAÑO
+        let selectedProduct = null;
+        function openProductModal(id) {
+            selectedProduct = productos.find(p => p.id === id);
+            document.getElementById('modal-title').textContent = selectedProduct.nombre;
+            document.getElementById('size-select').innerHTML = `
+                <option value="12oz" data-p="${selectedProduct.precio12oz}">12 Oz - RD$ ${selectedProduct.precio12oz}</option>
+                <option value="16oz" data-p="${selectedProduct.precio16oz}">16 Oz - RD$ ${selectedProduct.precio16oz}</option>
+            `;
+            document.getElementById('single-product-options').style.display = 'block';
+            modal.style.display = 'flex';
+        }
+
+        // AGREGAR AL CARRITO (Desde el Formulario)
+        document.getElementById('purchase-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            if (selectedProduct) {
+                const sizeSelect = document.getElementById('size-select');
+                const size = sizeSelect.value;
+                const price = sizeSelect.options[sizeSelect.selectedIndex].dataset.p;
+
+                cart.push({
+                    name: selectedProduct.nombre,
+                    size: size,
+                    price: parseInt(price),
+                    qty: 1
+                });
+                
+                selectedProduct = null;
+                modal.style.display = 'none';
+                updateCart();
+                cartPanel.classList.add('open');
+            } else {
+                sendWhatsApp();
+            }
+        });
+
+        function updateCart() {
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price * item.qty;
+                cartItemsContainer.innerHTML += `
+                    <div class="cart-item">
+                        <strong>${item.name}</strong> (${item.size})<br>
+                        RD$ ${item.price} x ${item.qty}
+                        <div style="margin-top:5px">
+                            <button onclick="changeQty(${index}, -1)">-</button>
+                            <button onclick="changeQty(${index}, 1)">+</button>
+                            <button onclick="removeItem(${index})" style="float:right; color:red; border:none; background:none; cursor:pointer;">Eliminar</button>
+                        </div>
+                    </div>
+                `;
+            });
+            cartTotal.textContent = total;
+            cartCount.textContent = cart.length;
+        }
+
+        window.changeQty = (index, delta) => {
+            cart[index].qty += delta;
+            if(cart[index].qty <= 0) cart.splice(index, 1);
+            updateCart();
+        };
+
+        window.removeItem = (index) => {
+            cart.splice(index, 1);
+            updateCart();
+        };
+        
+
+        // UI ACTIONS
+        document.getElementById('cart-toggle').onclick = () => cartPanel.classList.toggle('open');
+        document.getElementById('close-cart').onclick = () => cartPanel.classList.remove('open');
+        document.querySelector('.close-button').onclick = () => modal.style.display = 'none';
+
+        document.getElementById('checkout-btn').onclick = () => {
+            if(cart.length === 0) return alert("Tu carrito está vacío");
+            selectedProduct = null; // Modo Checkout General
+            document.getElementById('modal-title').textContent = "Datos de Envío";
+            document.getElementById('single-product-options').style.display = 'none';
+            modal.style.display = 'flex';
+        };
+
+        function sendWhatsApp() {
+            const name = document.getElementById('customer-name').value;
+            const address = document.getElementById('customer-address').value;
+            const payment = document.getElementById('payment-method').value;
+            
+            let message = `🍓 *NUEVO PEDIDO FRESARTE*%0A%0A`;
+            message += `👤 *Cliente:* ${name}%0A`;
+            message += `📍 *Dirección:* ${address}%0A`;
+            message += `💳 *Pago:* ${payment}%0A%0A`;
+            message += `🛒 *Productos:*%0A`;
+            
+            cart.forEach(item => {
+                message += `- ${item.name} (${item.size}) x${item.qty} - RD$ ${item.price * item.qty}%0A`;
+            });
+            
+            message += `%0A💰 *TOTAL: RD$ ${cartTotal.textContent}*`;
+            
+            const phone = "18090000000"; // PON TU NUMERO AQUÍ
+            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+        }
+    </script>
     <section id="crea" class="custom-section">
-        <h2>Prepara tu FRESARTE</h2>
+        <h2><p style="text-align:center;">PREPARA TU FRESARTE</h2></p>
         <div id="custom-builder" class="grid-container">
             <!-- Aquí irían los pasos del FRESARTE -->
             <div class="custom-step">
@@ -410,113 +513,12 @@ footer{
                     <li>Salsa de pistacho con chocolate italiano</li>
                 </ul>
             </div>
-            <p class="nota-personalizada">¡Combina tus ingredientes favoritos!</p>
+        <h2> <p class="nota-personalizada">¡Combina tus ingredientes favoritos!</p></h2>
         </div>
     </section>
-
-<!-- MODAL DE COMPRA -->
-<div id="purchase-modal" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h3>Comprar <span id="modal-product-name"></span></h3>
-        <form id="purchase-form">
-            <label for="size">Tamaño:</label>
-            <select id="size" name="size" required></select>
-
-            <label for="quantity">Cantidad:</label>
-            <input type="number" id="quantity" name="quantity" value="1" min="1" required>
-
-            <label for="notes">Notas o Personalización (Opcional):</label>
-            <textarea id="notes" name="notes" placeholder="Ej: Sin nueces, extra crema, etc."></textarea>
-
-            <button type="submit" class="buy-button final-order">Confirmar Pedido</button>
-            <p class="nota-personalizada">(pedido)</p>
-        </form>
-    </div>
-</div>
-
-<footer>
-    <p>&copy; 2025 FRESARTE. Todos los derechos reservados.</p>
+    <footer>
+    <p>&copy; 2026 FRESARTE. Todos los derechos reservados.</p>
 </footer>
-
-<script>
-// MENÚ MÓVIL
-const burger = document.getElementById("fresaBurger");
-const nav = document.getElementById("fresaNav");
-burger.addEventListener("click", () => { nav.classList.toggle("open"); });
-
-// PRODUCTOS
-const productos = [
-    {nombre:"Fresas Chocolate Negro",descripcion:"Fresa con cobertura de delicioso chocolate negro.",imagen:"fresa-chocolate.jpg",precio12oz:450,precio16oz:600},
-    {nombre:"Fresas Chocolate Blanco",descripcion:"Fresa con cobertura de cremoso chocolate blanco.",imagen:"fresa-chocolateblaco.jpg",precio12oz:500,precio16oz:650},
-    {nombre:"Fresas Pistacho",descripcion:"Fresa con deliciosa crema y topping de pistacho.",imagen:"fresa-pistacho.jpg",precio12oz:700,precio16oz:900},
-    {nombre:"Fresas Dubai",descripcion:"La mezcla exótica con un toque de Oriente Medio.",imagen:"fresa-dubai.jpg",precio12oz:750,precio16oz:950},
-    {nombre:"Fresas Con Crema",descripcion:"Fresa con crema",imagen:"fresa-crema.jpg",precio12oz:400,precio16oz:550},
-    {nombre:"Mango Con Crema",descripcion:"Mango con crema",imagen:"mango-crema.jpg",precio12oz:400,precio16oz:550},
-    {nombre:"Melocotón Con Crema",descripcion:"Melocotón con crema",imagen:"melocoton-crema.jpg",precio12oz:400,precio16oz:550},
-    {nombre:"Uvas Con Crema",descripcion:"Uvas con crema",imagen:"uvas-crema.jpg",precio12oz:400,precio16oz:550},
-    {nombre:"Mixto Con Crema",descripcion:"Mixto con crema",imagen:"mixto-crema.jpg",precio12oz:400,precio16oz:550}
-];
-
-const container = document.getElementById('productos-container');
-productos.forEach(producto => {
-    const card = document.createElement('div');
-    card.classList.add('product-card');
-    card.innerHTML = `
-        <img src="${producto.imagen}" alt="${producto.nombre}" class="product-image">
-        <div class="product-info">
-            <h3>${producto.nombre}</h3>
-            <p>${producto.descripcion}</p>
-            <div class="price">
-                12 Oz: RD$ ${producto.precio12oz} | 16 Oz: RD$ ${producto.precio16oz}
-            </div>
-            <button class="buy-button open-modal-btn" 
-                    data-name="${producto.nombre}"
-                    data-price-12="${producto.precio12oz}"
-                    data-price-16="${producto.precio16oz}">
-                Ordenar Ahora
-            </button>
-        </div>
-    `;
-    container.appendChild(card);
-});
-
-// MODAL
-const modal = document.getElementById('purchase-modal');
-const closeButton = document.querySelector('.close-button');
-const modalProductName = document.getElementById('modal-product-name');
-const modalSizeSelect = document.getElementById('size');
-const purchaseForm = document.getElementById('purchase-form');
-
-container.addEventListener('click', (event) => {
-    if(event.target.classList.contains('open-modal-btn')){
-        const button = event.target;
-        modalProductName.textContent = button.dataset.name;
-        modalSizeSelect.innerHTML = `
-            <option value="12oz" data-price="${button.dataset.price12}">12 Oz (RD$ ${button.dataset.price12})</option>
-            <option value="16oz" data-price="${button.dataset.price16}">16 Oz (RD$ ${button.dataset.price16})</option>
-        `;
-        modal.style.display='block';
-    }
-});
-
-closeButton.addEventListener('click', ()=>{modal.style.display='none';});
-window.addEventListener('click', e=>{if(e.target==modal) modal.style.display='none';});
-            
-purchaseForm.addEventListener('submit', e=>{
-    e.preventDefault();
-    const product = modalProductName.textContent;
-    const sizeOption = modalSizeSelect.options[modalSizeSelect.selectedIndex];
-    const size = sizeOption.value;
-    const price = parseInt(sizeOption.dataset.price);
-    const quantity = parseInt(document.getElementById('quantity').value);
-    const notes = document.getElementById('notes').value;
-    const total = price * quantity;
-    alert(`Pedido simulado: ${quantity} x ${product} (${size}). Total: RD$ ${total}. Notas: ${notes||'Ninguna'}`);
-    purchaseForm.reset();
-    modal.style.display='none';
-});
-</script>
 
 </body>
 </html>
