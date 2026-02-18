@@ -2,16 +2,128 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Blog FresArte & Experiencias</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
-
-    
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<title>Fresarte Blog </title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
 <style>
+:root{
+    --fresa:#ff4f8b;
+    --rosa:#ffc1da;
+    --fondo:#fff5fa;
+    --texto:#4a2c35;
+    --glass:rgba(255,255,255,0.4);
+}
 
+body{
+    margin:0;
+    font-family:'Nunito',sans-serif;
+    background:linear-gradient(135deg,#fff5fa,#ffe3f0);
+    overflow-x:hidden;
+    color:var(--texto);
+}
 
+/* Fondo partículas */
+canvas{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:-1;
+}
+
+/* Header */
+header{
+    text-align:center;
+    padding:40px 20px;
+}
+header h1{
+    font-family:'Outfit',serif;
+    font-size:3rem;
+    background:linear-gradient(90deg,var(--fresa),#ff94b6);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* Buscador */
+.search{
+    text-align:center;
+    margin-bottom:30px;
+}
+.search input{
+    padding:12px 20px;
+    border-radius:30px;
+    border:none;
+    width:60%;
+    max-width:400px;
+    font-size:16px;
+    box-shadow:0 5px 15px rgba(255,120,160,0.3);
+    outline:none;
+}
+
+/* Grid */
+.blog-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+    padding:40px;
+}
+
+/* Cards */
+.card{
+    background:var(--glass);
+    backdrop-filter:blur(15px);
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 10px 30px rgba(255,80,140,0.2);
+    transition:transform .4s ease, box-shadow .4s;
+    cursor:pointer;
+}
+.card:hover{
+    transform:rotateY(8deg) rotateX(4deg) scale(1.05);
+    box-shadow:0 15px 40px rgba(255,50,120,0.4);
+}
+
+.card h3{
+    margin-top:0;
+    color:var(--fresa);
+}
+
+.like-btn{
+    background:none;
+    border:none;
+    font-size:20px;
+    cursor:pointer;
+    transition:transform .3s;
+}
+.like-btn.liked{
+    color:var(--fresa);
+    transform:scale(1.4);
+}
+
+/* Modo oscuro */
+.dark{
+    background:linear-gradient(135deg,#2b1a22,#3c2430);
+    color:#fff;
+}
+.dark .card{
+    background:rgba(255,255,255,0.08);
+}
+.toggle-dark{
+    position:fixed;
+    top:20px;
+    right:20px;
+    background:var(--fresa);
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:30px;
+    cursor:pointer;
+    box-shadow:0 5px 15px rgba(255,80,120,0.4);
+}
+
+<style>
 :root{
     --fresa:#f06a9b;
     --rosita:#ffd7e5;
@@ -20,19 +132,23 @@
     --texto:#573542;
     --radius:14px;
     --shadow:0 6px 18px rgba(255,120,160,0.15);
-    --hover:rgba(255,160,200,0.20);
     --white:#fff;
 }
 
-/* RESET */
-*{margin:0;padding:0;box-sizing:border-box;font-family:"Nunito", sans-serif;}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Nunito", sans-serif;
+}
+
 body{
     background:linear-gradient(180deg,var(--rosita-clara),var(--white));
     color:var(--texto);
     min-height:100vh;
 }
 
-/* --- HEADER COMPLETO --- */
+/* HEADER */
 .fresarte-header{
     background:#fff;
     padding:12px 0;
@@ -41,6 +157,7 @@ body{
     z-index:999;
     box-shadow:0 0 18px rgba(0,0,0,0.2);
 }
+
 .fresarte-container{
     width:90%;
     max-width:1200px;
@@ -50,338 +167,403 @@ body{
     align-items:center;
 }
 
-/* LOGO */
-.fresarte-logo{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    text-decoration:none;
-  
-}
-.logo-redondo {
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #e63946;
+.logo-redondo{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #e63946;
 }
 
-/* --- NAV --- */
+/* NAV */
 .fresarte-nav ul{
     list-style:none;
     display:flex;
     gap:20px;
 }
+
 .fresarte-nav a{
     text-decoration:none;
     color:#000;
     font-weight:600;
     padding:8px 12px;
-    position:relative;
-    transition:.25s;
 }
-.fresarte-nav a::after{
-    content:"";
-    position:absolute;
-    left:50%;
-    bottom:0;
-    width:0%;
-    height:3px;
-    background:#e63946;
-    border-radius:10px;
-    transition:all .3s ease;
-}
-.fresarte-nav a:hover::after{
-    width:100%;
-    left:0;
-}
+
 .fresarte-nav a.active{
     background:#f5d5e0;
     color:#e63946;
     font-weight:bold;
 }
 
-/* --- MENÚ MÓVIL --- */
-.fresarte-burger{
-    display:none;
-    background:none;
-    border:0;
-    font-size:28px;
+/* HERO */
+.hero-text{
+    width:90%;
+    max-width:1200px;
+    margin:40px auto;
+    background:var(--white);
+    border-radius:20px;
+    padding:40px;
+    box-shadow:var(--shadow);
+    text-align:center;
+}
+
+.hero-text h2{
+    font-family:'Fredoka', sans-serif;
+    font-size:36px;
+    font-weight:900;
     color:#e63946;
+    margin-bottom:10px;
+}
+
+/* SECCIONES */
+main{
+    padding:40px 5%;
+}
+
+.section{
+    max-width:1100px;
+    margin:auto;
+    margin-bottom:3rem;
+}
+
+.section h3{
+    color:var(--fresa);
+    margin-bottom:1rem;
+    font-size:1.8rem;
+}
+
+.section p{
+    font-size:1.05rem;
+    line-height:1.7;
+    margin-bottom:1rem;
+}
+
+/* CARDS POP UP */
+.about-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:2rem;
+}
+
+.about-card{
+    background:var(--white);
+    padding:25px;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor:pointer;
 }
-@media(max-width:900px){
-    .fresarte-burger{
-        display:block;
-    }
-    .fresarte-nav{
-        position:absolute;
-        right:0;
-        top:70px;
-        width:75%;
-        background:white;
-        padding:20px;
-        border-radius:0 0 0 18px;
-        display:none;
-        flex-direction:column;
-        box-shadow:0 0 18px rgba(0,0,0,0.2);
-        animation:menuSlide .35s ease-out;
-    }
-    @keyframes menuSlide{
-        from{opacity:0;transform:translateY(-10px);}
-        to{opacity:1;transform:translateY(0);}
-    }
-    .fresarte-nav.open{display:block;}
-    .fresarte-nav ul{flex-direction:column;}
+
+.about-card:hover{
+    transform: translateY(-12px) scale(1.05);
+    box-shadow:0 18px 35px rgba(240,106,155,0.35);
 }
 
-
-
-
-
-
-
-:root {
-  --bg: #fce7e7;
-  --card: #fffefe;
-  --text: #000000;
-  --sub: #000000;
+.about-card h4{
+    color:var(--fresa);
+    margin-bottom:.7rem;
 }
 
-.light {
-  --bg: #e7c2c2;
-  --card: #fffefe;
-  --text: #000000;
-  --sub: #000000;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  transition: 0.4s;
-}
-
-header {
-  text-align: center;
-  padding: 2px 2px;
-}
-
-header h1 {
-      font-size: 36px;
-    font-weight: 900;
-    color: #e63946;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-header p {
-  color: var(--sub);
-  margin-top: 10px;
-}
-
-.toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: var(--card);
-  padding: 10px 20px;
-  border-radius: 30px;
-  cursor: pointer;
-}
-
-section {
-  padding: 60px 8%;
-}
-
-h2 {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.frase {
-  text-align: center;
-  font-size: 1.3rem;
-  margin-bottom: 40px;
-  color: var(--sub);
-}
-
-/* VIDEOS */
-.videos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-  gap: 25px;
-}
-
-.video-box {
-  background: var(--card);
-  border-radius: 20px;
-  padding: 15px;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 0.5s;
-}
-
-.video-box video {
-  width: 100%;
-  border-radius: 15px;
-}
-
-/* GALERÍA */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-  gap: 20px;
-}
-
-.image-box {
-  height: 200px;
-  border-radius: 25px;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  transform: scale(0.9);
-  transition: 0.5s;
-}
-
-.show {
-  opacity: 1;
-  transform: none;
-}
-
-footer {
-  text-align: center;
-  padding: 40px;
-  color: var(--sub);
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:15px;
+    background:var(--texto);
+    color:var(--white);
 }
 </style>
 </head>
 
 <body>
 
-<div class="toggle" onclick="toggleTheme()">🌙 / ☀️</div>
 <header class="fresarte-header">
     <div class="fresarte-container">
-        <img src="logito.jpg" class="logo-redondo">
+        <a href="index.html">
+            <img src="logo.jpg" alt="Logo Fresarte" class="logo-redondo">
+        </a>
+
         <nav class="fresarte-nav">
             <ul>
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="quienes-somos.html">Quiénes somos</a></li>
+                <li><a href="Quienessomos.html" class="active">Quienes somos</a></li>
                 <li><a href="menu-fresarte.html">Productos</a></li>
                 <li><a href="Sucursales.html">Sucursales</a></li>
                 <li><a href="contactos.html">Contacto</a></li>
-                <li><a href="blog2.html"class="active">Blog</a></li>
+                <li><a href="blog2.html">Blog</a></li>
             </ul>
         </nav>
     </div>
 </header>
+
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<button class="toggle-dark">🌙</button>
+
 <header>
-  <h1>Blog FresArte</h1>
-<center> <p>Momentos, reflexiones y experiencias</p></center>
+    <h1> Fresarte Blog</h1>
+    <h2> <p>Dulsura en Cada momento</p></h2>
 </header>
 
-<section>
-  <div class="frase" id="frase"></div>
-</section>
-
-<section>
-<div class="videos">
-
-<div class="video-box reveal">
-  <video src="Download (1).mp4" controls></video>
+<div class="search">
+    <input type="text" id="searchInput" placeholder="Buscar artículo...">
 </div>
 
-<div class="video-box reveal">
-  <video src="Download (2).mp4" controls></video>
-</div>
+<section class="blog-container" id="blogContainer">
 
-<div class="video-box reveal">
-  <video src="Download (3).mp4" controls></video>
-</div>
+    <div class="card">
+        <h3>Productos del exteriror</h3>
+        <p>Los productos de FresArte son como, la lechede Dubai. Trellendo productos con 
+            calidad, desde nuestro pais y otros del mundo.</p>
+        <button class="like-btn">❤</button>
+    </div>
 
-<div class="video-box reveal">
-  <video src="Download (5).mp4" controls></video>
-</div>
+    <div class="card">
+        <h3>Creativos en cada minuto</h3>
+        <p>FresArte realiza vaijes en a diferetes partes del pais, con rutas que conectan con el publico</p>
+        <button class="like-btn">❤</button>
+    </div>
 
-<div class="video-box reveal">
-  <video src="Download (6).mp4" controls></video>
-</div>
-
-<div class="video-box reveal">
-  <video src="Download (7).mp4" controls></video>
-</div>
-
-</div>
-</section>
-
-<section>
-  <div class="videos">
-
-<h2>Conoces mas obre las fresas, y 
-  sus pepiedades nutritivas para tu salud</h2>
- <div class="video-box reveal">
-
-  <h5>Las fresas son una fruta roja, dulce y aromática,
-   rica en vitamina C, antioxidantes (como las antocianinas
-    y polifenoles), fibra, potasio y manganeso, que ofrecen 
-     como el fortalecimiento del sistema inmunológico, la 
-     reducción de la inflamación, la protección cardiovascular y 
-     la ayuda en la digestión y regulación de la glucosa, siendo bajas en calorías y
-   versátiles para consumir en jugos, postres o ensaladas. </h5>
-
-</div>
-
-</div>
+    <div class="card">
+        <h3>Fresas llenas de amor</h3>
+        <p>Esta es mas que un producto, este producto se lleno
+             de ganas de alegra a cada uno de los que prueban nuestras FresArte</p>
+        <button class="like-btn">❤</button>
+    </div>
 
 </section>
 
 
 
-<footer>
-© 2026 Fresarte Bakery  · Blog FresArte
-</footer>
 
-<script>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fresarte Blog Futurista</title>
 
-const frases = [
-  "Cada día es una nueva oportunidad.",
-  "Las experiencias nos definen.",
-  "Aprender también es avanzar.",
-  "Menos ruido, más esencia.",
-  "Todo proceso tiene sentido."
-];
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
-let i = 0;
-setInterval(() => {
-  document.getElementById("frase").textContent = frases[i];
-  i = (i + 1) % frases.length;
-}, 4000);
-
-
-function toggleTheme() {
-  document.body.classList.toggle("light");
+<style>
+:root{
+    --fresa:#ff4f8b;
+    --rosa:#ffc1da;
+    --fondo:#fff5fa;
+    --texto:#4a2c35;
+    --glass:rgba(255,255,255,0.35);
 }
 
+body{
+    margin:0;
+    font-family:'Nunito',sans-serif;
+    background:linear-gradient(135deg,#fff5fa,#ffe3f0);
+    color:var(--texto);
+    overflow-x:hidden;
+}
 
-const reveals = document.querySelectorAll(".reveal");
+/* Header */
+header{
+    text-align:center;
+    padding:40px 20px;
+}
+header h1{
+    font-family:'Poppins',serif;
+    font-size:3rem;
+    background:linear-gradient(90deg,var(--fresa),#ff94b6);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
 
-window.addEventListener("scroll", () => {
-  reveals.forEach(el => {
-    const top = el.getBoundingClientRect().top;
-    if(top < window.innerHeight - 50) {
-      el.classList.add("show");
-    }
-  });
+/* GRID */
+.blog-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+    padding:40px;
+}
+
+/* CARDS */
+.card{
+    background:var(--glass);
+    backdrop-filter:blur(15px);
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 10px 30px rgba(255,80,140,0.2);
+    transition:all .5s ease;
+    transform:translateY(40px);
+    opacity:0;
+}
+.card.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+.card:hover{
+    transform:scale(1.05);
+    box-shadow:0 20px 50px rgba(255,60,120,0.4);
+}
+
+/* BLOQUE IMAGEN */
+.image-block img{
+    width:100%;
+    border-radius:15px;
+    transition:transform .5s ease;
+}
+.image-block:hover img{
+    transform:scale(1.1);
+}
+
+/* BLOQUE VIDEO */
+.video-block iframe,
+.video-block video{
+    width:100%;
+    border-radius:15px;
+}
+
+/* Modal */
+.modal{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    display:none;
+    justify-content:center;
+    align-items:center;
+}
+.modal-content{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    width:80%;
+    max-width:600px;
+    animation:pop .4s ease;
+}
+@keyframes pop{
+    from{transform:scale(.7);opacity:0;}
+    to{transform:scale(1);opacity:1;}
+}
+
+.close{
+    float:right;
+    cursor:pointer;
+    font-size:20px;
+    color:var(--fresa);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Experiencias</h1>
+    <p>Imágenes videos</p>
+</header>
+
+<section class="blog-container">
+
+    
+
+    <!-- BLOQUE VIDEO YOUTUBE -->
+    <div class="card video-block">
+        <h3>Video Inspiración</h3>
+        <!-- CAMBIA EL LINK DEL VIDEO -->
+      <video controls>
+            <source src="C:\Users\DELL INSPIRON\Desktop\School\Analisis y desarollo de soluciones Web\FresArte Blog\videos\Download (5).mp4" type="video/mp4">
+        </video>
+        <p></p>
+    </div>
+
+    <!-- BLOQUE VIDEO MP4 -->
+    <div class="card video-block">
+        <h3>Video Propio</h3>
+        <!-- CAMBIA EL ARCHIVO MP4 -->
+        <video controls>
+            <source src="C:\Users\DELL INSPIRON\Desktop\School\Analisis y desarollo de soluciones Web\FresArte Blog\videos\Download (2).mp4" type="video/mp4">
+        </video>
+        <p> </p>
+    </div>
+
+        <!-- BLOQUE VIDEO MP4 -->
+    <div class="card video-block">
+        <h3>Video Propio</h3>
+        <!-- CAMBIA EL ARCHIVO MP4 -->
+        <video controls>
+            <source src="C:\Users\DELL INSPIRON\Desktop\School\Analisis y desarollo de soluciones Web\FresArte Blog\videos\Download (1).mp4" type="video/mp4">
+        </video>
+        <p> </p>
+    </div>
+
+
+    <!-- BLOQUE IMAGEN -->
+    <div class="card image-block">
+        <h3>Galería Fresa</h3>
+        <!-- CAMBIA LA IMAGEN AQUÍ -->
+             <img src="C:\Users\DELL INSPIRON\Desktop\images.jpg" alt="Imagen Fresa">
+        <p></p>
+    </div>
+
+        <!-- BLOQUE IMAGEN -->
+    <div class="card image-block">
+        <h3>Galería Fresa</h3>
+        <!-- CAMBIA LA IMAGEN AQUÍ -->
+        <img src="C:\Users\DELL INSPIRON\Desktop\images.jpg" alt="Imagen Fresa">
+        <p>Un baso de dulsura</p>
+    </div>
+
+        <!-- BLOQUE IMAGEN -->
+    <div class="card image-block">
+        <h3>Galería Fresa</h3>
+        <!-- CAMBIA LA IMAGEN AQUÍ -->
+        <img src="C:\Users\DELL INSPIRON\Desktop\images.jpg" alt="Imagen Fresa">
+        <p></p>
+    </div>
+</section>
+
+   
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Fresarte </h2>
+        <p>Una Fresa es casi dulce, pero una FresArte le da color a tus dias</p>
+    </div>
+</div>
+
+<script>
+/* Animación al hacer scroll */
+const cards=document.querySelectorAll(".card");
+const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    });
+},{threshold:0.2});
+cards.forEach(card=>observer.observe(card));
+
+/* Modal */
+const modal=document.getElementById("modal");
+cards.forEach(card=>{
+    card.addEventListener("click",()=>{
+        modal.style.display="flex";
+    });
 });
-
-
-
+document.querySelector(".close").onclick=()=>{
+    modal.style.display="none";
+};
+window.onclick=e=>{
+    if(e.target==modal){
+        modal.style.display="none";
+    }
+};
 </script>
 
 </body>
@@ -397,6 +579,64 @@ window.addEventListener("scroll", () => {
 
 
 
+
+<script>
+/* Partículas fondo */
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particlesArray=[];
+for(let i=0;i<80;i++){
+    particlesArray.push({
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height,
+        radius:Math.random()*3+1,
+        dx:(Math.random()-0.5),
+        dy:(Math.random()-0.5)
+    });
+}
+
+function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particlesArray.forEach(p=>{
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.radius,0,Math.PI*2);
+        ctx.fillStyle="rgba(255,120,160,0.4)";
+        ctx.fill();
+        p.x+=p.dx;
+        p.y+=p.dy;
+        if(p.x<0||p.x>canvas.width)p.dx*=-1;
+        if(p.y<0||p.y>canvas.height)p.dy*=-1;
+    });
+    requestAnimationFrame(animate);
+}
+animate();
+
+/* Like interactivo */
+document.querySelectorAll(".like-btn").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+        btn.classList.toggle("liked");
+    });
+});
+
+/* Buscador */
+document.getElementById("searchInput").addEventListener("keyup",function(){
+    let filter=this.value.toLowerCase();
+    document.querySelectorAll(".card").forEach(card=>{
+        card.style.display=card.innerText.toLowerCase().includes(filter)?"block":"none";
+    });
+});
+
+/* Modo oscuro */
+document.querySelector(".toggle-dark").addEventListener("click",()=>{
+    document.body.classList.toggle("dark");
+});
+</script>
+
+</body>
+</html>
 
 
 
