@@ -347,29 +347,50 @@ html{
 <footer> © 2026 Fresarte Bakery · ¡Gracias por contactarnos! </footer>
 
 <script>
-const burger=document.getElementById("fresaBurger");
-const nav=document.getElementById("fresaNav");
 
-burger.addEventListener("click",()=>{
-nav.classList.toggle("open");
+/* =========================================
+   MENÚ HAMBURGUESA (NAVEGACIÓN RESPONSIVA)
+========================================= */
+
+// Selección de elementos
+const burger = document.getElementById("fresaBurger");
+const nav = document.getElementById("fresaNav");
+
+// Evento para abrir/cerrar el menú
+burger.addEventListener("click", () => {
+    nav.classList.toggle("open");
 });
 
-document.querySelectorAll(".fresarte-nav a").forEach(link=>{
-link.addEventListener("click",()=>nav.classList.remove("open"));
+// Cerrar menú al hacer clic en un enlace
+document.querySelectorAll(".fresarte-nav a").forEach(link => {
+    link.addEventListener("click", () => nav.classList.remove("open"));
 });
 
-window.addEventListener("load",()=>{
-document.getElementById("titulo").classList.add("show");
+
+/* =========================================
+   ANIMACIÓN DEL TÍTULO AL CARGAR LA PÁGINA
+========================================= */
+
+window.addEventListener("load", () => {
+    document.getElementById("titulo").classList.add("show");
 });
 
+
+/* =========================================
+   CONTADOR DE CARACTERES EN EL MENSAJE
+========================================= */
+
+// Selección de elementos
 const textarea = document.getElementById("mensaje");
 const contador = document.getElementById("contador");
 const LIMITE = 300;
 
+// Evento para contar caracteres en tiempo real
 textarea.addEventListener("input", () => {
     const longitud = textarea.value.length;
     contador.textContent = `${longitud} / ${LIMITE}`;
 
+    // Cambiar estilo si se alcanza el límite
     if (longitud >= LIMITE) {
         contador.classList.add("limite");
     } else {
@@ -377,15 +398,31 @@ textarea.addEventListener("input", () => {
     }
 });
 
-document.getElementById("contactForm").addEventListener("submit",e=>{
+
+/* =========================================
+   VALIDACIÓN Y ENVÍO DEL FORMULARIO
+========================================= */
+
+document.getElementById("contactForm").addEventListener("submit", e => {
+    
+    // Evita el envío automático del formulario
     e.preventDefault();
-    const toast=document.getElementById("toast");
+
+    // Mostrar mensaje tipo "toast"
+    const toast = document.getElementById("toast");
     toast.classList.add("show");
-    setTimeout(()=>toast.classList.remove("show"),3000);
+
+    // Ocultar mensaje después de 3 segundos
+    setTimeout(() => toast.classList.remove("show"), 3000);
+
+    // Limpiar formulario
     e.target.reset();
+
+    // Reiniciar contador de caracteres
     contador.textContent = "0 / 300";
     contador.classList.remove("limite");
 });
+
 </script>
 
 <div id="toast" class="toast">🍓 ¡Mensaje enviado con éxito, gracias por escribirnos! 💌</div>
