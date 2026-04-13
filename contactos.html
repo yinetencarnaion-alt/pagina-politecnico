@@ -421,12 +421,12 @@ form.addEventListener("submit", e => {
 
     // VALIDACIONES
     if (nombre === "") {
-        mostrarError("✖️ El nombre es obligatorio");
+        mostrarError(" El nombre es obligatorio");
         return;
     }
 
     if (nombre.length < 3) {
-        mostrarError("✖️ El nombre debe tener al menos 3 caracteres");
+        mostrarError(" El nombre debe tener al menos 3 caracteres");
         return;
     }
 
@@ -436,17 +436,17 @@ form.addEventListener("submit", e => {
     }
 
     if (!emailRegex.test(correo)) {
-        mostrarError("✖️ El correo no es válido");
+        mostrarError(" El correo no es válido");
         return;
     }
 
     if (mensaje === "") {
-        mostrarError("✖️ El mensaje no puede estar vacío");
+        mostrarError(" El mensaje no puede estar vacío");
         return;
     }
 
     if (mensaje.length > 300) {
-        mostrarError("✖️ El mensaje supera el límite permitido");
+        mostrarError(" El mensaje supera el límite permitido");
         return;
     }
 
