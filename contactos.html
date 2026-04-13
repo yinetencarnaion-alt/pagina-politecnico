@@ -308,11 +308,14 @@ html{
 <p class="intro">¿Tienes preguntas o deseas realizar un pedido especial? 💌</p>
 
 <form id="contactForm">
-<input type="text" placeholder="🍓 Tu nombre " required>
-<input type="email" placeholder="🍓 Tu correo electrónico " required>
-<input type="text" placeholder="🍓 Asunto (opcional) ">
+<input id="nombre" type="text" placeholder="🍓 Tu nombre " required>
+<input id="correo" type="email" placeholder="🍓 Tu correo electrónico " required>
+<input type="text" placeholder="🍓 Asunto (opcional)">
+    
 <textarea id="mensaje" placeholder="🍓 Tu mensaje... " maxlength="300" required></textarea>
+
 <small id="contador">0 / 300</small>
+    
 <button type="submit">Enviar mensaje</button>
 </form>
 
@@ -390,7 +393,6 @@ textarea.addEventListener("input", () => {
     const longitud = textarea.value.length;
     contador.textContent = `${longitud} / ${LIMITE}`;
 
-    // Cambiar estilo si se alcanza el límite
     if (longitud >= LIMITE) {
         contador.classList.add("limite");
     } else {
@@ -400,28 +402,79 @@ textarea.addEventListener("input", () => {
 
 
 /* =========================================
-   VALIDACIÓN Y ENVÍO DEL FORMULARIO
+   VALIDACIÓN COMPLETA DEL FORMULARIO
 ========================================= */
 
-document.getElementById("contactForm").addEventListener("submit", e => {
-    
-    // Evita el envío automático del formulario
+const form = document.getElementById("contactForm");
+
+form.addEventListener("submit", e => {
+
     e.preventDefault();
 
-    // Mostrar mensaje tipo "toast"
+    const nombre = document.getElementById("nombre").value.trim();
+    const correo = document.getElementById("correo").value.trim();
+    const mensaje = document.getElementById("mensaje").value.trim();
+
     const toast = document.getElementById("toast");
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // VALIDACIONES
+    if (nombre === "") {
+        mostrarError("El nombre es obligatorio");
+        return;
+    }
+
+    if (nombre.length < 3) {
+        mostrarError("El nombre debe tener al menos 3 caracteres");
+        return;
+    }
+
+    if (correo === "") {
+        mostrarError("El correo es obligatorio");
+        return;
+    }
+
+    if (!emailRegex.test(correo)) {
+        mostrarError("El correo no es válido");
+        return;
+    }
+
+    if (mensaje === "") {
+        mostrarError("El mensaje no puede estar vacío");
+        return;
+    }
+
+    if (mensaje.length > 300) {
+        mostrarError("El mensaje supera el límite permitido");
+        return;
+    }
+
+    // SI TODO ESTÁ BIEN
+    toast.textContent = "Mensaje enviado correctamente";
     toast.classList.add("show");
 
-    // Ocultar mensaje después de 5 segundos
-    setTimeout(() => toast.classList.remove("show"), 5000);
+    setTimeout(() => toast.classList.remove("show"), 4000);
 
-    // Limpiar formulario
-    e.target.reset();
+    form.reset();
 
-    // Reiniciar contador de caracteres
+    // Reiniciar contador
     contador.textContent = "0 / 300";
     contador.classList.remove("limite");
 });
+
+
+/* =========================================
+   FUNCIÓN PARA MOSTRAR ERRORES
+========================================= */
+
+function mostrarError(mensaje) {
+    const toast = document.getElementById("toast");
+    toast.textContent = mensaje;
+    toast.classList.add("show");
+
+    setTimeout(() => toast.classList.remove("show"), 6000);
+}
 
 </script>
 
