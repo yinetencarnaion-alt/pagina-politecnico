@@ -188,6 +188,10 @@ select{
     border-radius:10px;
     font-size:16px;
 }
+
+select:invalid {
+    color: gray;
+}
     
 textarea{min-height:110px;}
 
@@ -319,9 +323,7 @@ html{
 <input id="correo" type="email" placeholder="🍓 Tu correo electrónico ">
     
 <select id="asunto">
-    <option value="" disabled selected hidden>
-        🍓 Selecciona un asunto (opcional)
-    </option>
+   <option value="">🍓 Selecciona un asunto (opcional)</option>
     <option value="pedido">Realizar un pedido</option>
     <option value="consulta">Consulta general</option>
     <option value="reclamo">Reclamo</option>
