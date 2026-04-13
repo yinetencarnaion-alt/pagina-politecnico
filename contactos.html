@@ -310,7 +310,15 @@ html{
 <form id="contactForm" novalidate>
 <input id="nombre" type="text" placeholder="🍓 Tu nombre ">
 <input id="correo" type="email" placeholder="🍓 Tu correo electrónico ">
-<input type="text" placeholder="🍓 Asunto (opcional)">
+    
+<select id="asunto">
+    <option value="">🍓 Selecciona un asunto (opcional)</option>
+    <option value="pedido">Realizar un pedido</option>
+    <option value="consulta">Consulta general</option>
+    <option value="reclamo">Reclamo</option>
+    <option value="sugerencia">Sugerencia</option>
+    <option value="otro">Otro</option>
+</select>
     
 <textarea id="mensaje" placeholder="🍓 Tu mensaje... " maxlength="300"></textarea>
 
