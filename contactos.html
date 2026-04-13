@@ -412,8 +412,8 @@ document.getElementById("contactForm").addEventListener("submit", e => {
     const toast = document.getElementById("toast");
     toast.classList.add("show");
 
-    // Ocultar mensaje después de 3 segundos
-    setTimeout(() => toast.classList.remove("show"), 3000);
+    // Ocultar mensaje después de 5 segundos
+    setTimeout(() => toast.classList.remove("show"), 5000);
 
     // Limpiar formulario
     e.target.reset();
