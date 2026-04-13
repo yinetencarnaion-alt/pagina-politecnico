@@ -372,16 +372,13 @@ html{
    MENÚ HAMBURGUESA (NAVEGACIÓN RESPONSIVA)
 ========================================= */
 
-// Selección de elementos
 const burger = document.getElementById("fresaBurger");
 const nav = document.getElementById("fresaNav");
 
-// Evento para abrir/cerrar el menú
 burger.addEventListener("click", () => {
     nav.classList.toggle("open");
 });
 
-// Cerrar menú al hacer clic en un enlace
 document.querySelectorAll(".fresarte-nav a").forEach(link => {
     link.addEventListener("click", () => nav.classList.remove("open"));
 });
@@ -400,12 +397,10 @@ window.addEventListener("load", () => {
    CONTADOR DE CARACTERES EN EL MENSAJE
 ========================================= */
 
-// Selección de elementos
 const textarea = document.getElementById("mensaje");
 const contador = document.getElementById("contador");
 const LIMITE = 300;
 
-// Evento para contar caracteres en tiempo real
 textarea.addEventListener("input", () => {
     const longitud = textarea.value.length;
     contador.textContent = `${longitud} / ${LIMITE}`;
@@ -430,6 +425,7 @@ form.addEventListener("submit", e => {
 
     const nombre = document.getElementById("nombre").value.trim();
     const correo = document.getElementById("correo").value.trim();
+    const asunto = document.getElementById("asunto").value; // 👈 CORREGIDO
     const mensaje = document.getElementById("mensaje").value.trim();
 
     const toast = document.getElementById("toast");
@@ -467,6 +463,9 @@ form.addEventListener("submit", e => {
         return;
     }
 
+    // INFO OPCIONAL (solo para pruebas)
+    console.log("Asunto seleccionado:", asunto);
+
     // SI TODO ESTÁ BIEN
     toast.textContent = "🍓 ¡Mensaje enviado con éxito, gracias por escribirnos! 💌";
     toast.classList.add("show");
@@ -475,7 +474,6 @@ form.addEventListener("submit", e => {
 
     form.reset();
 
-    // Reiniciar contador
     contador.textContent = "0 / 300";
     contador.classList.remove("limite");
 });
@@ -492,13 +490,7 @@ function mostrarError(mensaje) {
 
     setTimeout(() => toast.classList.remove("show"), 6000);
 }
-    
-/* Opción de asunto */    
-    const asunto = document.getElementById("asunto").value;
-   
-    if (asunto === "") {
-    console.log("El usuario no seleccionó asunto");
-}
+
 </script>
 
 </body>
