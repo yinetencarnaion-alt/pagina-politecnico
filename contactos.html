@@ -201,7 +201,14 @@ button:hover{
 button:active{
     transform:scale(.96);
 }
-
+    
+select{
+    padding:12px;
+    border:2px solid #e63946;
+    border-radius:10px;
+    font-size:16px;
+}
+    
 .toast{
     position:fixed;
     bottom:30px;
@@ -485,7 +492,13 @@ function mostrarError(mensaje) {
 
     setTimeout(() => toast.classList.remove("show"), 6000);
 }
-
+    
+/* Opción de asunto */    
+    const asunto = document.getElementById("asunto").value;
+   
+    if (asunto === "") {
+    console.log("El usuario no seleccionó asunto");
+}
 </script>
 
 </body>
